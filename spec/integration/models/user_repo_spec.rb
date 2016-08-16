@@ -1,3 +1,5 @@
+require 'user_repo'
+
 RSpec.describe UserRepo do
   subject(:user_repo) { UserRepo.new }
 
