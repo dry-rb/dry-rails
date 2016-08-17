@@ -31,6 +31,10 @@ module Dry
       end
 
       class Railtie < ::Rails::Railtie
+        initializer 'dry.system.create_container' do
+          System::Rails.configure
+        end
+
         config.to_prepare do |*args|
           Railtie.finalize!
         end
