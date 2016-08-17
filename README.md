@@ -16,10 +16,58 @@
 
 Railtie for dry-system (つ◕౪◕)つ━☆ﾟ.*･｡ﾟ
 
-## Synopsis
+## Installation
+
+Add it to your Gemfile:
+
+```
+gem 'dry-system-rails'
+```
+
+Assuming your `Rails.application.class` is `MyApp::Application`, add `config/system/import.rb`
+file with the following content:
 
 ``` ruby
+# config/system/import.rb
+module MyApp
+  Import = Container.injector
+end
 ```
+
+To configure auto-registration create `config/initializer/system.rb` with the following content:
+
+``` ruby
+require 'dry/system/rails'
+
+Dry::System::Rails.configure do |config|
+  # you can set it to whatever you want and add as many dirs you want
+  config.auto_register << 'lib'
+end
+```
+
+Now you can use `MyApp::Import` to inject components into your objects:
+
+``` ruby
+# lib/user_repo.rb
+class UserRepo
+end
+
+# lib/create_user.rb
+require 'import'
+
+class CreateUser
+  include Import['user_repo']
+end
+```
+
+## TODO
+
+This is super alpha and it's missing a couple of things:
+
+* Support for code reloading in dev mode
+* Some generators to make UX nicer
+* Tests for loading scripts (console etc)
+* Tests for running rake tasks
 
 ## License
 
