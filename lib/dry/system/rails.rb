@@ -40,17 +40,20 @@ module Dry
         end
 
         def finalize!
-          namespace.const_set(:Container, container)
+          app_namespace.const_set(:Container, container)
           container.config.name = name
           container.finalize!
         end
 
         def name
-          namespace.name.underscore.to_sym
+          app_namespace.name.underscore.to_sym
         end
 
-        def namespace
-          Object.const_get(::Rails.application.class.to_s.split('::').first)
+        def app_namespace
+          @app_namespace ||= begin
+            top_level_namespace = ::Rails.application.class.to_s.split('::').first
+            Object.const_get(top_level_namespace)
+          end
         end
 
         def container
