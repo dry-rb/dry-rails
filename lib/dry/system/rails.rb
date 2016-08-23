@@ -49,6 +49,10 @@ module Dry
           app_namespace.name.underscore.to_sym
         end
 
+        # TODO: we had to rename namespace=>app_namespace because
+        #       Rake::DSL's Kernel#namespace *sometimes* breaks things.
+        #       Currently we are missing specs verifying that rake tasks work
+        #       correctly and those must be added!
         def app_namespace
           @app_namespace ||= begin
             top_level_namespace = ::Rails.application.class.to_s.split('::').first
