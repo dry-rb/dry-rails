@@ -40,6 +40,9 @@ module Dry
         end
 
         def finalize!
+          if app_namespace.const_defined?(:Container)
+            app_namespace.send(:remove_const, :Container)
+          end
           app_namespace.const_set(:Container, container)
           container.config.name = name
           container.finalize!
