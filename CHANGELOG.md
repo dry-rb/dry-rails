@@ -1,3 +1,9 @@
+# v0.1.0 2018-01-05
+
+### Changed
+
+* Upgraded to `dry-system` `v0.10.1`
+
 # v0.0.2 2016-08-23
 
 ### Fixed
