@@ -45,7 +45,7 @@ module Dry
           end
           app_namespace.const_set(:Container, container)
           container.config.name = name
-          container.finalize!
+          container.finalize!(freeze: !::Rails.env.test?)
         end
 
         def name

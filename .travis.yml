@@ -4,8 +4,9 @@ cache: bundler
 bundler_args: --without console
 script:
   - bundle exec rake spec
+  - RAILS_ENV=production bundle exec rspec --tag production_env
 rvm:
-  - 2.3.1
+  - 2.3.4
 notifications:
   email: false
   webhooks:
