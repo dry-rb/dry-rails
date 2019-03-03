@@ -1,5 +1,5 @@
-require 'dry/system/container'
 require 'rails/railtie'
+require 'dry/system/rails/container'
 
 module Dry
   module System
@@ -21,7 +21,7 @@ module Dry
       def self.create_container(defaults)
         auto_register = defaults.auto_register
 
-        container = Class.new(Dry::System::Container).configure do |config|
+        container = Class.new(Container).configure do |config|
           config.root = ::Rails.root
           config.system_dir = config.root.join('config/system')
           config.auto_register = auto_register
@@ -44,7 +44,11 @@ module Dry
             app_namespace.send(:remove_const, :Container)
           end
           app_namespace.const_set(:Container, container)
+
+          app_namespace.send(:remove_const, :Import) if app_namespace.const_defined?(:Import)
+          app_namespace.const_set(:Import, injector)
           container.config.name = name
+
           container.finalize!(freeze: !::Rails.env.test?)
         end
 
@@ -65,6 +69,10 @@ module Dry
 
         def container
           Railtie.config.container
+        end
+
+        def injector
+          Railtie.config.injector
         end
       end
     end
