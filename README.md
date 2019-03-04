@@ -22,39 +22,76 @@ Add it to your Gemfile:
 gem 'dry-system-rails'
 ```
 
-Assuming your `Rails.application.class` is `MyApp::Application`, add `config/system/import.rb`
-file with the following content:
-
-``` ruby
-# config/system/import.rb
-module MyApp
-  Import = Container.injector
-end
-```
+## Usage
 
 To configure auto-registration create `config/initializer/system.rb` with the following content:
 
 ``` ruby
-require 'dry/system/rails'
-
 Dry::System::Rails.configure do |config|
   # you can set it to whatever you want and add as many dirs you want
   config.auto_register << 'lib'
 end
 ```
 
-Now you can use `MyApp::Import` to inject components into your objects:
+The `Dry::System::Rails::Railtie` creates a container and injector on your behalf at runtime and assign them to two constants `Container` and `Import`
+under your applications root module. E.g. if your application is named `MyApp`, the `Railtie` will add the following constants:
+
+* `MyApp::Container`
+* `MyApp::Import`
+
+Now you can use `MyApp::Import` to inject components into your objects and framework components:
 
 ``` ruby
 # lib/user_repo.rb
 class UserRepo
+
 end
 
 # lib/create_user.rb
-require 'import'
-
 class CreateUser
-  include Import['user_repo']
+  include MyApp::Import['user_repo']
+end
+
+# app/controllers/users_controller.rb
+class UsersController < ApplicationController
+  include MyApp::Import['create_user']
+end
+```
+
+## Working with Framework Dependencies
+
+The Rails API is designed around the usage of class methods. If you choose to write domain logic in objects you will likely encounter a situation where your code will have to use one of the framework components.  That is where manual registration using [bootable dependency](https://dry-rb.org/gems/dry-system/booting) will come in handy.
+
+E.g. You have an object `CreateWidget` that needs to process widgets asynchronously with an `Widgets:NotificationJob` but you want to leverage dependency injection to decouple the components:
+
+```ruby
+# config/initializer/system.rb
+Dry::System::Rails.configure do |config|
+  config.auto_register << 'lib'
+end
+
+# app/jobs/widgets/notification_job.rb
+class Widgets::NotificationJob < ApplicationJob
+end
+
+# config/system/boot/application.rb
+# Use bootable componets to manually register framework dependencies
+MyApp::Container.boot(:application) do |app|
+  setup do
+    app.namespace(:widgets) do |widgets|
+      widgets.register(:notification, memoize: true) { Widgets::NotificationJob }
+    end
+  end
+end
+
+# lib/create_widget.rb
+class CreateWidget
+  include MyApp::Import[job: 'widgets.notification']
+
+  def call(args)
+    # some logic that creates a widget command
+    job.perform_later(create_widget_command)
+  end
 end
 ```
 
@@ -62,7 +99,6 @@ end
 
 This is super alpha and it's missing a couple of things:
 
-* Support for code reloading in dev mode
 * Some generators to make UX nicer
 * Tests for loading scripts (console etc)
 * Tests for running rake tasks
