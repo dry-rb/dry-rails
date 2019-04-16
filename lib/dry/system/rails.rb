@@ -1,5 +1,7 @@
-require 'dry/system/container'
+# frozen_string_literal: true
+
 require 'rails/railtie'
+require 'dry/system/rails/container'
 
 module Dry
   module System
@@ -18,14 +20,14 @@ module Dry
         end
       end
 
-      def self.create_container(defaults)
+      def self.create_container(defaults = config)
         auto_register = defaults.auto_register
 
-        container = Class.new(Dry::System::Container).configure do |config|
+        container = Class.new(Container).configure { |config|
           config.root = ::Rails.root
           config.system_dir = config.root.join('config/system')
           config.auto_register = auto_register
-        end
+        }
 
         container.load_paths!('lib', 'app', 'app/models')
       end
@@ -35,17 +37,21 @@ module Dry
           System::Rails.configure
         end
 
-        config.to_prepare do |*args|
+        config.to_prepare do
           Railtie.finalize!
         end
 
         def finalize!
-          if app_namespace.const_defined?(:Container)
-            app_namespace.send(:remove_const, :Container)
-          end
-          app_namespace.const_set(:Container, container)
+          reload(:Container)
+
           container.config.name = name
-          container.finalize!(freeze: !::Rails.env.test?)
+          container.finalize!(freeze: freeze?)
+
+          reload(:Import)
+        end
+
+        def freeze?
+          !::Rails.env.test?
         end
 
         def name
@@ -64,7 +70,19 @@ module Dry
         end
 
         def container
-          Railtie.config.container
+          System::Rails.create_container
+        end
+
+        def import
+          container.injector
+        end
+
+        def reload(const_name)
+          if app_namespace.const_defined?(const_name)
+            app_namespace.__send__(:remove_const, const_name)
+          end
+
+          app_namespace.const_set(const_name, __send__(const_name.to_s.underscore))
         end
       end
     end
