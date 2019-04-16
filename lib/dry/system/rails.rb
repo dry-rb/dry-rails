@@ -42,11 +42,10 @@ module Dry
         end
 
         def finalize!
-          app_namespace.send(:remove_const, :Container) if app_namespace.const_defined?(:Container)
-          app_namespace.const_set(:Container, container)
+          reload(:Container)
 
-          app_namespace.send(:remove_const, :Import) if app_namespace.const_defined?(:Import)
-          app_namespace.const_set(:Import, injector)
+          reload(:Import)
+
           container.config.name = name
 
           container.finalize!(freeze: !::Rails.env.test?)
@@ -71,8 +70,13 @@ module Dry
           Railtie.config.container
         end
 
-        def injector
-          Railtie.config.injector
+        def import
+          container.injector
+        end
+
+        def reload(const_name)
+          app_namespace.__send__(:remove_const, const_name) if app_namespace.const_defined?(const_name)
+          app_namespace.const_set(const_name, __send__(const_name.to_s.underscore))
         end
       end
     end
