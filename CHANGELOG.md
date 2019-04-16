@@ -1,4 +1,4 @@
-# v0.2.0 to-be-released
+# v0.2.0 2019-04-16
 
 ### Added
 
