@@ -16,4 +16,14 @@ RSpec.describe 'Application container' do
       expect(system['operations.create_user']).to be_instance_of(Operations::CreateUser)
     end
   end
+
+  describe '#auto_register!' do
+    it 'auto-registers files based on config' do
+      mailer_worker = Dummy::Container['workers.mailer_worker']
+
+      expect(mailer_worker).to be_instance_of(Workers::MailerWorker)
+      expect(Dummy::Container['workers.mailer_worker']).to be(mailer_worker) # memoized
+      expect(mailer_worker.mailer).to be_instance_of(Mailer)
+    end
+  end
 end

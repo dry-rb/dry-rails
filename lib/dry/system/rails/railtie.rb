@@ -18,12 +18,11 @@ module Dry
           container = System::Rails.create_container(name: name)
 
           set_or_reload(:Container, container)
+          set_or_reload(:Import, container.injector)
 
           container.refresh_boot_files if reloading?
 
           container.finalize!(freeze: freeze?)
-
-          set_or_reload(:Import, container.injector)
         end
 
         # @api private
