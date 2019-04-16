@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails/railtie'
 require 'dry/system/rails/container'
 
@@ -21,11 +23,11 @@ module Dry
       def self.create_container(defaults)
         auto_register = defaults.auto_register
 
-        container = Class.new(Container).configure do |config|
+        container = Class.new(Container).configure { |config|
           config.root = ::Rails.root
           config.system_dir = config.root.join('config/system')
           config.auto_register = auto_register
-        end
+        }
 
         container.load_paths!('lib', 'app', 'app/models')
       end
@@ -35,14 +37,12 @@ module Dry
           System::Rails.configure
         end
 
-        config.to_prepare do |*args|
+        config.to_prepare do |*_args|
           Railtie.finalize!
         end
 
         def finalize!
-          if app_namespace.const_defined?(:Container)
-            app_namespace.send(:remove_const, :Container)
-          end
+          app_namespace.send(:remove_const, :Container) if app_namespace.const_defined?(:Container)
           app_namespace.const_set(:Container, container)
 
           app_namespace.send(:remove_const, :Import) if app_namespace.const_defined?(:Import)
