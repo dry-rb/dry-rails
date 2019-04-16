@@ -1,10 +1,10 @@
 [gem]: https://rubygems.org/gems/dry-system-rails
 [travis]: https://travis-ci.org/dry-rb/dry-system-rails
 [codeclimate]: https://codeclimate.com/github/dry-rb/dry-system-rails
-[coveralls]: https://coveralls.io/r/dry-rb/dry-system-rails
+[chat]: https://dry-rb.zulipchat.com
 [inchpages]: http://inch-ci.org/github/dry-rb/dry-system-rails
 
-# dry-system-rails [![Join the chat at https://gitter.im/dry-rb/chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dry-rb/chat)
+# dry-system-rails [![Join the chat at https://dry-rb.zulipchat.com](https://img.shields.io/badge/dry--rb-join%20chat-%23346b7a.svg)][chat]
 
 [![Gem Version](https://badge.fury.io/rb/dry-system-rails.svg)][gem]
 [![Build Status](https://travis-ci.org/dry-rb/dry-system-rails.svg?branch=master)][travis]
@@ -27,7 +27,7 @@ gem 'dry-system-rails'
 To configure auto-registration create `config/initializer/system.rb` with the following content:
 
 ``` ruby
-Dry::System::Rails.configure do |config|
+Dry::System::Rails.container do
   # you can set it to whatever you want and add as many dirs you want
   config.auto_register << 'lib'
 end
