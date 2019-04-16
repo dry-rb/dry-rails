@@ -45,9 +45,13 @@ module Dry
           reload(:Container)
 
           container.config.name = name
-          container.finalize!(freeze: !::Rails.env.test?)
+          container.finalize!(freeze: freeze?)
 
           reload(:Import)
+        end
+
+        def freeze?
+          !::Rails.env.test?
         end
 
         def name
