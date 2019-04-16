@@ -5,6 +5,7 @@ gemspec
 group :test do
   gem 'railties'
   gem 'actionpack'
+  gem 'simplecov', require: false, platform: :mri
 end
 
 group :tools do
