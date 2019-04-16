@@ -1,3 +1,14 @@
+# v0.2.0 to-be-released
+
+### Added
+
+- Support for code reloading in development environment (arielvalentin + solnic)
+
+### Changed
+
+- [BREAKING] Initializer interface is now `Dry::System::Rails.container { ... }` which simply captures the block
+  to evaluate it in the context of the container class. This gives you full control over container creation (solnic)
+
 # v0.1.0 2018-01-05
 
 ### Changed
