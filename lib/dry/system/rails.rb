@@ -20,7 +20,7 @@ module Dry
         end
       end
 
-      def self.create_container(defaults)
+      def self.create_container(defaults = config)
         auto_register = defaults.auto_register
 
         container = Class.new(Container).configure { |config|
@@ -37,18 +37,17 @@ module Dry
           System::Rails.configure
         end
 
-        config.to_prepare do |*_args|
+        config.to_prepare do
           Railtie.finalize!
         end
 
         def finalize!
           reload(:Container)
 
-          reload(:Import)
-
           container.config.name = name
-
           container.finalize!(freeze: !::Rails.env.test?)
+
+          reload(:Import)
         end
 
         def name
@@ -67,7 +66,7 @@ module Dry
         end
 
         def container
-          Railtie.config.container
+          System::Rails.create_container
         end
 
         def import
@@ -75,7 +74,10 @@ module Dry
         end
 
         def reload(const_name)
-          app_namespace.__send__(:remove_const, const_name) if app_namespace.const_defined?(const_name)
+          if app_namespace.const_defined?(const_name)
+            app_namespace.__send__(:remove_const, const_name)
+          end
+
           app_namespace.const_set(const_name, __send__(const_name.to_s.underscore))
         end
       end
