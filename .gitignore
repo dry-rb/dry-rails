@@ -7,3 +7,4 @@ tmp/
 .idea/
 Gemfile.lock
 .byebug_history
+spec/dummy/.bundle
