@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Application container' do
   subject(:system) { Dummy::Container }
 

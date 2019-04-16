@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 require File.expand_path('../lib/dry/system/rails/version', __FILE__)
 
 Gem::Specification.new do |spec|

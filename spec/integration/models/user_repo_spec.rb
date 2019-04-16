@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'user_repo'
 
 RSpec.describe UserRepo do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Dry::System::Rails::Railtie do
   subject(:railtie) do
     Dry::System::Rails::Railtie.instance
