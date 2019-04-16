@@ -2,6 +2,6 @@
 
 require 'dry/system/rails'
 
-Dry::System::Rails.configure do |config|
+Dry::System::Rails.container do
   config.auto_register << 'app/operations'
 end

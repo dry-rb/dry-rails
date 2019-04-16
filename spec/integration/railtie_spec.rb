@@ -6,23 +6,16 @@ RSpec.describe Dry::System::Rails::Railtie do
   end
 
   describe '.finalize!' do
-    let(:container) do
-      railtie.container
-    end
-
-    let(:import) do
-      railtie.import
-    end
-
     it 'reloads container and import module' do
-      container.register(:foo, Object.new)
+      Dummy::Container.register('foo', Object.new)
 
-      railtie.finalize!
+      Rails.application.reloader.reload!
 
-      expect(container.keys).to_not include(:foo)
+      expect(Dummy::Container.keys).to_not include('foo')
 
-      klass = Class.new
-      klass.include(import['operations.create_user'])
+      klass = Class.new do
+        include Dummy::Import['operations.create_user']
+      end
 
       obj = klass.new
 

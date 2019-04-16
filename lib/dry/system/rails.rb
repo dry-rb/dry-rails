@@ -6,52 +6,52 @@ require 'dry/system/rails/container'
 module Dry
   module System
     module Rails
-      extend Dry::Configurable
-
-      setting :auto_register, []
-
-      def self.configure
-        super
-
-        container = create_container(config)
-
-        Railtie.configure do
-          config.container = container
-        end
+      def self.container(&block)
+        @container_block = block
+        self
       end
 
-      def self.create_container(defaults = config)
-        auto_register = defaults.auto_register
+      def self.container_block
+        defined?(@container_block) && @container_block
+      end
 
+      def self.create_container(options = {})
         container = Class.new(Container).configure { |config|
           config.root = ::Rails.root
           config.system_dir = config.root.join('config/system')
-          config.auto_register = auto_register
+          config.update(options)
         }
 
         container.load_paths!('lib', 'app', 'app/models')
+
+        container.class_eval(&@container_block) if container_block
+
+        container
       end
 
       class Railtie < ::Rails::Railtie
-        initializer 'dry.system.create_container' do
-          System::Rails.configure
-        end
-
         config.to_prepare do
           Railtie.finalize!
         end
 
         def finalize!
-          reload(:Container)
+          container = System::Rails.create_container(name: name)
 
-          container.config.name = name
+          set_or_reload(:Container, container)
+
+          container.refresh_boot_files if reloading?
+
           container.finalize!(freeze: freeze?)
 
-          reload(:Import)
+          set_or_reload(:Import, container.injector)
         end
 
         def freeze?
           !::Rails.env.test?
+        end
+
+        def reloading?
+          app_namespace.const_defined?(:Container)
         end
 
         def name
@@ -69,20 +69,12 @@ module Dry
           end
         end
 
-        def container
-          System::Rails.create_container
-        end
-
-        def import
-          container.injector
-        end
-
-        def reload(const_name)
+        def set_or_reload(const_name, const)
           if app_namespace.const_defined?(const_name)
             app_namespace.__send__(:remove_const, const_name)
           end
 
-          app_namespace.const_set(const_name, __send__(const_name.to_s.underscore))
+          app_namespace.const_set(const_name, const)
         end
       end
     end

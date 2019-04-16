@@ -13,6 +13,16 @@ module Dry
           def require_path(path)
             require_dependency(path)
           end
+
+          # This is called when reloading in dev mode
+          #
+          # @api private
+          def refresh_boot_files
+            booter.boot_files.each do |boot_file|
+              load(boot_file)
+            end
+            self
+          end
         end
       end
     end
