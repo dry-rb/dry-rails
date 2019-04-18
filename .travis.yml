@@ -11,7 +11,7 @@ script:
   - bundle exec rake spec
   - RAILS_ENV=production bundle exec rspec --tag production_env
 rvm:
-  - 2.6.2
+  - 2.6.3
   - 2.5.5
   - 2.4.6
   - 2.3.8
