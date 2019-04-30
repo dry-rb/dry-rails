@@ -66,7 +66,8 @@ E.g. You have an object `CreateWidget` that needs to process widgets asynchronou
 
 ```ruby
 # config/initializer/system.rb
-Dry::System::Rails.configure do |config|
+Dry::System::Rails.container do
+  # changes `self` to the container
   config.auto_register << 'lib'
 end
 
