@@ -24,7 +24,7 @@ gem 'dry-system-rails'
 
 ## Usage
 
-To configure auto-registration create `config/initializer/system.rb` with the following content:
+To configure auto-registration create `config/initializers/system.rb` with the following content:
 
 ``` ruby
 Dry::System::Rails.container do
@@ -65,7 +65,7 @@ The Rails API is designed around the usage of class methods. If you choose to wr
 E.g. You have an object `CreateWidget` that needs to process widgets asynchronously with an `Widgets:NotificationJob` but you want to leverage dependency injection to decouple the components:
 
 ```ruby
-# config/initializer/system.rb
+# config/initializers/system.rb
 Dry::System::Rails.container do
   # changes `self` to the container
   config.auto_register << 'lib'
