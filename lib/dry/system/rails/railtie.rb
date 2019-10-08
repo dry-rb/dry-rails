@@ -22,12 +22,7 @@ module Dry
 
           container.refresh_boot_files if reloading?
 
-          container.finalize!(freeze: freeze?)
-        end
-
-        # @api private
-        def freeze?
-          !::Rails.env.test?
+          container.finalize! unless ::Rails.env.test?
         end
 
         # @api private
