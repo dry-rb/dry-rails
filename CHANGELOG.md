@@ -1,3 +1,11 @@
+# v0.3.1 2019-10-09
+
+### Changed
+
+- Do not finalize container when application is in test mode (timriley)
+
+[Compare v0.3.0...v0.3.1](https://github.com/dry-rb/dry-system/compare/v0.3.0...v0.3.1)
+
 # v0.3.0 2019-09-29
 
 ### Changed
