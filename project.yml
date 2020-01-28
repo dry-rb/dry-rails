@@ -1,0 +1,18 @@
+name: dry-rails
+codacy_id: codacy-id
+gemspec:
+  authors: ["Piotr Solnica"]
+  email: ["piotr.solnica@gmail.com"]
+  summary: "TODO: summary"
+  description: "TODO: description"
+  files: []
+  development_dependencies:
+    - bundler
+    - rake
+    - rspec
+  runtime_dependencies:
+    - [dry-system, "~> 0.14"]
+    - [dry-validation, "~> 1.4"]
+    - [dry-types, "~> 1.2"]
+    - [dry-monads, "~> 1.3"]
+    - [dry-matcher, "~> 0.8"]

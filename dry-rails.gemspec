@@ -4,12 +4,12 @@
 require File.expand_path('../lib/dry/system/rails/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'dry-system-rails'
+  spec.name          = 'dry-rails'
   spec.version       = Dry::System::Rails::VERSION
   spec.authors       = ['Piotr Solnica']
   spec.email         = ['piotr.solnica@gmail.com']
-  spec.summary       = 'Railtie for dry-system'
-  spec.homepage      = 'https://github.com/dry-rb/dry-system-rails'
+  spec.summary       = 'Railtie for dry-rb'
+  spec.homepage      = 'https://github.com/dry-rb/dry-rails'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
