@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.version       = Dry::Rails::VERSION.dup
 
-  spec.summary       = "TODO: summary"
-  spec.description   = "TODO: description"
+  spec.summary       = "The official dry-rb railtie for Ruby on Rails"
+  spec.description   = "The railtie provides a smooth integration with dry-system, integrates dry-rb components with the controllers and more"
   spec.homepage      = 'https://dry-rb.org/gems/dry-rails'
   spec.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "dry-rails.gemspec", "lib/**/*"]
   spec.require_paths = ['lib']
