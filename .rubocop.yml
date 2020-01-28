@@ -1,15 +1,38 @@
+# this file is managed by dry-rb/devtools project
+
 AllCops:
   TargetRubyVersion: 2.4
-
-Style/EachWithObject:
-  Enabled: false
 
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: single_quotes
 
-Style/Alias:
+Style/AccessModifierDeclarations:
   Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/SymbolArray:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/Alias:
+  Enabled: true
+  EnforcedStyle: prefer_alias_method
 
 Style/LambdaCall:
   Enabled: false
@@ -20,6 +43,28 @@ Style/StabbyLambdaParentheses:
 Style/FormatString:
   Enabled: false
 
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Exclude:
+    - "spec/spec_helper.rb"
+
+Lint/BooleanSymbol:
+  Enabled: false
+
 Layout/SpaceInLambdaLiteral:
   Enabled: false
 
@@ -27,33 +72,37 @@ Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+Naming/PredicateName:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - "lib/dry-*.rb"
+
+Naming/MethodName:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 100
 
 Metrics/MethodLength:
-  Max: 22
+  Enabled: false
 
 Metrics/ClassLength:
-  Max: 150
-
-Metrics/AbcSize:
-  Max: 20
+  Enabled: false
 
 Metrics/BlockLength:
-  Enabled: true
-  Exclude:
-    - 'spec/**/*_spec.rb'
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 25
 
 Metrics/CyclomaticComplexity:
   Enabled: true
-  Max: 10
-
-Lint/BooleanSymbol:
-  Enabled: false
-
-Style/AccessModifierDeclarations:
-  Enabled: false
-
-Style/BlockDelimiters:
-  EnforcedStyle: semantic
-
+  Max: 12

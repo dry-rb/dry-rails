@@ -1,26 +1,38 @@
-# coding: utf-8
 # frozen_string_literal: true
+# this file is managed by dry-rb/devtools project
 
-require File.expand_path('../lib/dry/rails/version', __FILE__)
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'dry/rails/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'dry-rails'
-  spec.version       = Dry::Rails::VERSION
-  spec.authors       = ['Piotr Solnica']
-  spec.email         = ['piotr.solnica@gmail.com']
-  spec.summary       = 'Railtie for dry-rb'
-  spec.homepage      = 'https://github.com/dry-rb/dry-rails'
+  spec.authors       = ["Piotr Solnica"]
+  spec.email         = ["piotr.solnica@gmail.com"]
   spec.license       = 'MIT'
+  spec.version       = Dry::Rails::VERSION.dup
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.summary       = "TODO: summary"
+  spec.description   = "TODO: description"
+  spec.homepage      = 'https://dry-rb.org/gems/dry-rails'
+  spec.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "dry-rails.gemspec", "lib/**/*"]
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '~> 2.4'
 
-  spec.add_runtime_dependency 'dry-system', '~> 0.12'
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
+  spec.metadata['changelog_uri']     = 'https://github.com/dry-rb/dry-rails/blob/master/CHANGELOG.md'
+  spec.metadata['source_code_uri']   = 'https://github.com/dry-rb/dry-rails'
+  spec.metadata['bug_tracker_uri']   = 'https://github.com/dry-rb/dry-rails/issues'
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.required_ruby_version = ">= 2.4.0"
+
+  # to update dependencies edit project.yml
+  spec.add_runtime_dependency "dry-matcher", "~> 0.8"
+  spec.add_runtime_dependency "dry-monads", "~> 1.3"
+  spec.add_runtime_dependency "dry-system", "~> 0.14"
+  spec.add_runtime_dependency "dry-types", "~> 1.2"
+  spec.add_runtime_dependency "dry-validation", "~> 1.4"
+
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end

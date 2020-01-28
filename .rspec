@@ -1,4 +1,4 @@
 --color
 --require spec_helper
 --order random
---tag ~production_env
+--warnings
