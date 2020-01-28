@@ -23,6 +23,7 @@ module Dry
 
         container.finalize!(freeze: !::Rails.env.test?)
       end
+      alias_method :reload, :finalize!
 
       # @api private
       def reloading?

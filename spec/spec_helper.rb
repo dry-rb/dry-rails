@@ -20,6 +20,10 @@ require SPEC_ROOT.join('dummy/config/environment')
 RSpec.configure do |config|
   config.disable_monkey_patching!
 
+  config.before do
+    Dry::Rails::Railtie.reload
+  end
+
   config.around(production: true) do |example|
     prev_env = Rails.env
     Rails.env = 'production'
