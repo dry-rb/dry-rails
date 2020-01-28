@@ -37,7 +37,7 @@ module Dry
 
       default_options = {
         root: ::Rails.root,
-        system_dir: ::Rails.root.join('config/system'),
+        system_dir: ::Rails.root.join('config/system')
       }
       container.config.update(default_options.merge(options))
 

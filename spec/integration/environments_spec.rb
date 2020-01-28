@@ -3,7 +3,7 @@
 RSpec.describe 'Environments' do
   subject { Dummy::Container }
 
-  describe "frozen?" do
+  describe 'frozen?' do
     context 'when Rails environment is test' do
       it { is_expected.not_to be_frozen }
     end

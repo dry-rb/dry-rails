@@ -19,7 +19,8 @@ RSpec.describe 'Application container' do
 
   describe '#auto_register!' do
     it 'auto-registers files based on config' do
-      Dummy::Container.finalize!(freeze: false) # force auto-registration to run (since we're in test env)
+      # force auto-registration to run (since we're in test env)
+      Dummy::Container.finalize!(freeze: false)
 
       mailer_worker = Dummy::Container['workers.mailer_worker']
 

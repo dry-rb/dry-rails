@@ -42,7 +42,7 @@ module Dry
       # @api private
       def app_namespace
         @app_namespace ||= begin
-          top_level_namespace = ::Rails.application.class.to_s.split("::").first
+          top_level_namespace = ::Rails.application.class.to_s.split('::').first
           Object.const_get(top_level_namespace)
         end
       end
