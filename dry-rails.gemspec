@@ -1,11 +1,11 @@
 # coding: utf-8
 # frozen_string_literal: true
 
-require File.expand_path('../lib/dry/system/rails/version', __FILE__)
+require File.expand_path('../lib/dry/rails/version', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = 'dry-rails'
-  spec.version       = Dry::System::Rails::VERSION
+  spec.version       = Dry::Rails::VERSION
   spec.authors       = ['Piotr Solnica']
   spec.email         = ['piotr.solnica@gmail.com']
   spec.summary       = 'Railtie for dry-rb'

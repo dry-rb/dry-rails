@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'dry/system/rails'
+require 'dry/rails'
 
-Dry::System::Rails.container do
+Dry::Rails.container do
   use :env, inferrer: -> { Rails.env.to_sym }
 
   config.auto_register << 'lib' << 'app/operations'
