@@ -16,7 +16,6 @@ end
 begin
   require 'byebug'
 rescue LoadError; end
-
 require 'dry-rails'
 
 SPEC_ROOT = Pathname(__dir__)
