@@ -21,7 +21,7 @@ module Dry
 
         container.refresh_boot_files if reloading?
 
-        container.finalize! unless ::Rails.env.test?
+        container.finalize!(freeze: !::Rails.env.test?)
       end
 
       # @api private

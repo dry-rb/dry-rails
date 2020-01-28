@@ -26,4 +26,14 @@ Dir[SPEC_ROOT.join('support/**/*.rb')].each(&method(:require))
 ENV['RAILS_ENV'] ||= 'test'
 require SPEC_ROOT.join('dummy/config/environment')
 
-RSpec.configure(&:disable_monkey_patching!)
+RSpec.configure do |config|
+  config.disable_monkey_patching!
+
+  config.around(production: true) do |example|
+    prev_env = Rails.env
+    Rails.env = 'production'
+    example.run
+  ensure
+    Rails.env = prev_env
+  end
+end
