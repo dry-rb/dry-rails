@@ -21,7 +21,7 @@ module Dry
     #
     # @api public
     def self.container(&block)
-      @container_block = block
+      _container_blocks << block
       self
     end
 
@@ -33,7 +33,9 @@ module Dry
     def self.create_container(options = {})
       container = Class.new(Container)
 
-      container.class_eval(&@container_block) if container_block
+      _container_blocks.each do |block|
+        container.class_eval(&block)
+      end
 
       default_options = {
         root: ::Rails.root,
@@ -47,8 +49,8 @@ module Dry
     end
 
     # @api private
-    def self.container_block
-      defined?(@container_block) && @container_block
+    def self._container_blocks
+      @_container_blocks ||= []
     end
   end
 end
