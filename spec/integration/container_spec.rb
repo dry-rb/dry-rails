@@ -28,5 +28,21 @@ RSpec.describe 'Application container' do
       expect(Dummy::Container['workers.mailer_worker']).to be(mailer_worker) # memoized
       expect(mailer_worker.mailer).to be_instance_of(Mailer)
     end
+
+    context 'strategies' do
+      before do
+        Dry::Rails.container { auto_register!('foo', strategy: :not_here) }
+      end
+
+      after do
+        Dry::Rails.instance_variable_set('@_container_blocks', [])
+      end
+
+      it 'raises a meaningful error when invalid name was passed' do
+        expect {
+          Dry::Rails::Railtie.reload
+        }.to raise_error(Dry::Rails::InvalidAutoRegistrarStrategy, /not_here/)
+      end
+    end
   end
 end
