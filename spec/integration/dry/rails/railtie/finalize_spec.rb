@@ -3,13 +3,13 @@
 RSpec.describe Dry::Rails::Railtie, '.finalize!' do
   subject(:railtie) { Dry::Rails::Railtie.instance }
 
-  before(:all) do
+  it 'reloads container and import module', no_reload: true do
+    Rails.application.reloader.reload!
+
     Dry::Rails.container do
       auto_register!('app/operations')
     end
-  end
 
-  it 'reloads container and import module', no_reload: true do
     Dummy::Container.register('foo', Object.new)
 
     Rails.application.reloader.reload!
