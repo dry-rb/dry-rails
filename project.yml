@@ -4,7 +4,7 @@ gemspec:
   authors: ["Piotr Solnica"]
   email: ["piotr.solnica@gmail.com"]
   summary: "The official dry-rb railtie for Ruby on Rails"
-  description: "The railtie provides a smooth integration with dry-system, integrates dry-rb components with the controllers and more"
+  description: "dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework."
   files: []
   development_dependencies:
     - bundler
