@@ -12,6 +12,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d4677ea0c4c2497bb1af1b3ac31552f4)][codacy]
 [![Inline docs](http://inch-ci.org/github/dry-rb/dry-rails.svg?branch=master)][inchpages]
 
+dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework.
 ## Links
 
 * [User documentation](http://dry-rb.org/gems/dry-rails)
