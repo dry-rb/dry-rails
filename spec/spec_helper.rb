@@ -19,8 +19,8 @@ require SPEC_ROOT.join('dummy/config/environment')
 RSpec.configure do |config|
   config.disable_monkey_patching!
 
-  config.before do
-    Dry::Rails::Railtie.reload
+  config.before do |example|
+    Dry::Rails::Railtie.reload unless example.metadata[:no_reload]
   end
 
   config.around(production: true) do |example|
