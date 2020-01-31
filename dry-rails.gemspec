@@ -13,9 +13,11 @@ Gem::Specification.new do |spec|
   spec.version       = Dry::Rails::VERSION.dup
 
   spec.summary       = "The official dry-rb railtie for Ruby on Rails"
-  spec.description   = "The railtie provides a smooth integration with dry-system, integrates dry-rb components with the controllers and more"
+  spec.description   = "dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework."
   spec.homepage      = 'https://dry-rb.org/gems/dry-rails'
   spec.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "dry-rails.gemspec", "lib/**/*"]
+  spec.bindir        = 'bin'
+  spec.executables   = []
   spec.require_paths = ['lib']
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
