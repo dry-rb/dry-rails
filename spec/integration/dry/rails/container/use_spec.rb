@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Using dry-system plugins' do
-  xit 'with extra settings inside the initializer container block' do
-    # TODO: this requires an improvement in dry-system so that
-    #       it no longer uses `configure` as a hook for plugins
-
+  before(:all) do
     Dry::Rails.container do
       use :env, inferrer: -> { Rails.env }
     end
+  end
 
-    expect(Dummy::Container.env).to be(Rails.env.to_sym)
+  it 'with extra settings inside the initializer container block' do
+    expect(Dummy::Container.env).to be(Rails.env)
   end
 end
