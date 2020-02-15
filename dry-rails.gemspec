@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   # to update dependencies edit project.yml
   spec.add_runtime_dependency "dry-matcher", "~> 0.8"
   spec.add_runtime_dependency "dry-monads", "~> 1.3"
-  spec.add_runtime_dependency "dry-system", "~> 0.16"
+  spec.add_runtime_dependency "dry-system", "~> 0.14"
   spec.add_runtime_dependency "dry-types", "~> 1.2"
   spec.add_runtime_dependency "dry-validation", "~> 1.4"
 
