@@ -7,8 +7,8 @@ gemspec
 eval_gemfile 'Gemfile.devtools'
 
 group :test do
-  gem 'railties'
   gem 'actionpack'
+  gem 'railties'
 end
 
 group :tools do
