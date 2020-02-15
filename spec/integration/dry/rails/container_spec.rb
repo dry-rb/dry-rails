@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Dry::Rails, '.container' do
   subject(:system) { Dummy::Container }
 
