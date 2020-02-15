@@ -16,14 +16,25 @@ module Dry
       def finalize!
         container = Dry::Rails.create_container(name: name)
 
+        remove_constants
+
         set_or_reload(:Container, container)
         set_or_reload(:Import, container.injector)
+
+        container.features.each do |feature|
+          feature.enable!(self)
+        end
 
         container.refresh_boot_files if reloading?
 
         container.finalize!(freeze: !::Rails.env.test?)
       end
       alias_method :reload, :finalize!
+
+      # @api private
+      def container
+        app_namespace::Container
+      end
 
       # @api private
       def reloading?
@@ -55,6 +66,13 @@ module Dry
         end
 
         app_namespace.const_set(const_name, const)
+      end
+
+      # @api private
+      def remove_constants
+        (app_namespace.constants - %i[Container Import]).each do |const_name|
+          app_namespace.__send__(:remove_const, const_name)
+        end
       end
     end
   end

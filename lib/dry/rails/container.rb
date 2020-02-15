@@ -5,6 +5,9 @@ require 'dry/system/container'
 require 'dry/rails/errors'
 require 'dry/rails/auto_registrar_strategies'
 
+require 'dry/rails/feature'
+require 'dry/rails/features/application_contract'
+
 module Dry
   module Rails
     # Customized Container class for Rails application
@@ -12,6 +15,7 @@ module Dry
     # @api public
     class Container < System::Container
       setting :auto_register_configs, [], &:dup
+      setting :features, %i[application_contract]
 
       AUTO_REGISTER_STRATEGIES = {
         default: -> system { system.config.auto_registrar },
@@ -30,6 +34,11 @@ module Dry
           end
 
           self
+        end
+
+        # @api private
+        def features
+          @features ||= config.features.map { |name| Feature[name] }
         end
 
         # @api private
