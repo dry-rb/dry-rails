@@ -6,8 +6,6 @@ gemspec
 
 eval_gemfile 'Gemfile.devtools'
 
-gem 'dry-system', github: 'dry-rb/dry-system', branch: 'master'
-
 group :test do
   gem 'railties'
   gem 'actionpack'
