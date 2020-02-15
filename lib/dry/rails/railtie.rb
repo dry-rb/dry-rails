@@ -2,6 +2,8 @@
 
 require 'rails/railtie'
 
+require 'dry/rails/core/application_contract'
+
 module Dry
   module Rails
     # System railtie is responsible for setting up a container and handling reloading in dev mode
@@ -19,11 +21,21 @@ module Dry
         set_or_reload(:Container, container)
         set_or_reload(:Import, container.injector)
 
+        # TODO: this should not be hardcoded here
+        set_or_reload(
+          :ApplicationContract, Class.new(Core::ApplicationContract).finalize!(self)
+        )
+
         container.refresh_boot_files if reloading?
 
         container.finalize!(freeze: !::Rails.env.test?)
       end
       alias_method :reload, :finalize!
+
+      # @api private
+      def container
+        app_namespace::Container
+      end
 
       # @api private
       def reloading?
