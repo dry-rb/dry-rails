@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 require 'dry/system/container'
+require 'dry/system/components'
 
 require 'dry/rails/errors'
 require 'dry/rails/auto_registrar_strategies'
-
-require 'dry/rails/feature'
-require 'dry/rails/features/application_contract'
 
 module Dry
   module Rails
@@ -15,7 +13,7 @@ module Dry
     # @api public
     class Container < System::Container
       setting :auto_register_configs, [], &:dup
-      setting :features, %i[application_contract]
+      setting :features, %i[application_contract], reader: true
 
       AUTO_REGISTER_STRATEGIES = {
         default: -> system { system.config.auto_registrar },
@@ -37,11 +35,6 @@ module Dry
         end
 
         # @api private
-        def features
-          @features ||= config.features.map { |name| Feature[name] }
-        end
-
-        # @api private
         def finalize!(options = {})
           config.auto_register_configs.each do |(dir, opts, block)|
             strategy = opts.fetch(:strategy, :default)
@@ -56,6 +49,15 @@ module Dry
           end
 
           super
+        end
+
+        # Return if a given component was booted
+        #
+        # @return [Boolean]
+        #
+        # @api private
+        def booted?(name)
+          booter.booted.map(&:identifier).include?(name)
         end
 
         # Use `require_dependency` to make code reloading work

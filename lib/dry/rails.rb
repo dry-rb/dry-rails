@@ -2,6 +2,7 @@
 
 require 'dry/rails/railtie'
 require 'dry/rails/container'
+require 'dry/rails/components'
 
 module Dry
   # Initializer interface
