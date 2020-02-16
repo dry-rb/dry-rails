@@ -14,15 +14,17 @@ module Dry
 
       # @api private
       def finalize!
+        stop_features if reloading?
+
         container = Dry::Rails.create_container(name: name)
 
-        remove_constants
+        container.register(:railtie, self)
 
         set_or_reload(:Container, container)
         set_or_reload(:Import, container.injector)
 
         container.features.each do |feature|
-          feature.enable!(self)
+          container.boot(feature, from: :rails)
         end
 
         container.refresh_boot_files if reloading?
@@ -32,8 +34,15 @@ module Dry
       alias_method :reload, :finalize!
 
       # @api private
+      def stop_features
+        container.features.each do |feature|
+          container.stop(feature) if container.booted?(feature)
+        end
+      end
+
+      # @api private
       def container
-        app_namespace::Container
+        app_namespace.const_get(:Container)
       end
 
       # @api private
@@ -69,10 +78,8 @@ module Dry
       end
 
       # @api private
-      def remove_constants
-        (app_namespace.constants - %i[Container Import]).each do |const_name|
-          app_namespace.__send__(:remove_const, const_name)
-        end
+      def remove_constant(const_name)
+        app_namespace.__send__(:remove_const, const_name)
       end
     end
   end
