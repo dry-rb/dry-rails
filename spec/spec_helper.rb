@@ -16,6 +16,8 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require SPEC_ROOT.join('dummy/config/environment')
 
+require 'rspec/rails'
+
 RSpec.configure do |config|
   config.disable_monkey_patching!
 
