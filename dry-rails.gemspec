@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "The official dry-rb railtie for Ruby on Rails"
   spec.description   = "dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework."
   spec.homepage      = 'https://dry-rb.org/gems/dry-rails'
-  spec.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "dry-rails.gemspec", "lib/**/*"]
+  spec.files         = Dir["CHANGELOG.md", "LICENSE", "README.md", "dry-rails.gemspec", "template.rb", "lib/**/*"]
   spec.bindir        = 'bin'
   spec.executables   = []
   spec.require_paths = ['lib']
