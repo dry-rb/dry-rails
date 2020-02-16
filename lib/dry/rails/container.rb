@@ -13,7 +13,7 @@ module Dry
     # @api public
     class Container < System::Container
       setting :auto_register_configs, [], &:dup
-      setting :features, %i[application_contract], reader: true
+      setting :features, %i[application_contract safe_params], reader: true
 
       AUTO_REGISTER_STRATEGIES = {
         default: -> system { system.config.auto_registrar },
