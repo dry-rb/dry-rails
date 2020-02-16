@@ -6,7 +6,7 @@ gemspec
 
 eval_gemfile 'Gemfile.devtools'
 
-RAILS_VERSION = ENV['RAILS_VERSION'] || '5.2'
+RAILS_VERSION = (ENV['RAILS_VERSION'] || '6.0').sub('x', '0')
 
 %w[railties actionview actionpack].each do |name|
   gem name, "~> #{RAILS_VERSION}"
