@@ -14,10 +14,10 @@ RSpec.describe Dry::Rails::Container, '.auto_register!' do
   end
 
   it 'auto-registers files based on block config' do
-    mailer_worker = Dummy::Container['workers.mailer_worker']
+    mailer_worker = Dummy::Container['mailer_worker']
 
-    expect(mailer_worker).to be_instance_of(Workers::MailerWorker)
-    expect(Dummy::Container['workers.mailer_worker']).to be(mailer_worker) # memoized
+    expect(mailer_worker).to be_instance_of(MailerWorker)
+    expect(Dummy::Container['mailer_worker']).to be(mailer_worker) # memoized
     expect(mailer_worker.mailer).to be_instance_of(Mailer)
   end
 end

@@ -9,6 +9,6 @@ Bundler.setup(*Rails.groups)
 
 module Dummy
   class Application < Rails::Application
-    config.root = Pathname(__dir__).join('..')
+    config.root = Pathname(__dir__).join("..").realpath
   end
 end

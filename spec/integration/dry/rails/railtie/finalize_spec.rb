@@ -17,11 +17,11 @@ RSpec.describe Dry::Rails::Railtie, '.finalize!' do
     expect(Dummy::Container.keys).to_not include('foo')
 
     klass = Class.new do
-      include Dummy::Import['operations.create_user']
+      include Dummy::Import['create_user']
     end
 
     obj = klass.new
 
-    expect(obj.create_user).to be_instance_of(Operations::CreateUser)
+    expect(obj.create_user).to be_instance_of(CreateUser)
   end
 end

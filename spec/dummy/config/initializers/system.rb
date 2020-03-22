@@ -3,5 +3,5 @@
 require 'dry/rails'
 
 Dry::Rails.container do
-  config.auto_register << 'lib'
+  auto_register!('lib')
 end

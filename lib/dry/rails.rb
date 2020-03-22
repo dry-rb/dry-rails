@@ -34,17 +34,16 @@ module Dry
     def self.create_container(options = {})
       container = Class.new(Container)
 
-      _container_blocks.each do |block|
-        container.class_eval(&block)
-      end
-
       default_options = {
         root: ::Rails.root,
         system_dir: ::Rails.root.join('config/system')
       }
+
       container.config.update(default_options.merge(options))
 
-      container.load_paths!('lib', 'app', 'app/models')
+      _container_blocks.each do |block|
+        container.class_eval(&block)
+      end
 
       container
     end
