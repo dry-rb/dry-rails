@@ -8,9 +8,6 @@ initializer 'system.rb', <<-CODE
     config.features = %i[application_contract]
 
     # enable auto-registration in the lib dir
-    # config.auto_register << 'lib'
-
-    # enable auto-registration of custom components
-    # auto_register!('app/serializers', strategy: :namespaced)
+    # auto_register!('lib')
   end
 CODE
