@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'dry/rails'
+require "dry/rails"
 
 Dry::Rails.container do
-  auto_register!('lib')
+  auto_register!("lib")
 end

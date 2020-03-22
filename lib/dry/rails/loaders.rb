@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dry/system/loader'
+require "dry/system/loader"
 
 module Dry
   module Rails

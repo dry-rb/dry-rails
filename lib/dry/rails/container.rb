@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'dry/system/container'
-require 'dry/system/components'
+require "dry/system/container"
+require "dry/system/components"
 
-require 'dry/rails/errors'
-require 'dry/rails/auto_registrars/app'
+require "dry/rails/errors"
+require "dry/rails/auto_registrars/app"
 
 module Dry
   module Rails

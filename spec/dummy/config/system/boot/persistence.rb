@@ -2,6 +2,6 @@
 
 Dummy::Container.boot(:persistence) do |container|
   start do
-    container.register('persistence.db', :i_am_db)
+    container.register("persistence.db", :i_am_db)
   end
 end

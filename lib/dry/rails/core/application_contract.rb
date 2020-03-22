@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dry/validation/contract'
+require "dry/validation/contract"
 
 module Dry
   module Rails
@@ -8,7 +8,7 @@ module Dry
       class ApplicationContract < Dry::Validation::Contract
         # @api private
         def self.finalize!(railtie)
-          load_paths = Dir[railtie.container.root.join('config/locales/*.yml')]
+          load_paths = Dir[railtie.container.root.join("config/locales/*.yml")]
 
           config.messages.top_namespace = :contracts
           config.messages.backend = :i18n

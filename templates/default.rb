@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-gem 'dry-rails', github: 'dry-rb/dry-rails'
+gem "dry-rails", github: "dry-rb/dry-rails"
 
-initializer 'system.rb', <<-CODE
+initializer "system.rb", <<-CODE
   Dry::Rails.container do
     # cherry-pick features
     config.features = %i[application_contract]

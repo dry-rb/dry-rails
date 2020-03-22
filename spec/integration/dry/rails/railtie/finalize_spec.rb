@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
-RSpec.describe Dry::Rails::Railtie, '.finalize!' do
+RSpec.describe Dry::Rails::Railtie, ".finalize!" do
   subject(:railtie) { Dry::Rails::Railtie.instance }
 
-  it 'reloads container and import module', no_reload: true do
+  it "reloads container and import module", no_reload: true do
     Rails.application.reloader.reload!
 
     Dry::Rails.container do
-      auto_register!('app/operations')
+      auto_register!("app/operations")
     end
 
-    Dummy::Container.register('foo', Object.new)
+    Dummy::Container.register("foo", Object.new)
 
     Rails.application.reloader.reload!
 
-    expect(Dummy::Container.keys).to_not include('foo')
+    expect(Dummy::Container.keys).to_not include("foo")
 
     klass = Class.new do
-      include Dummy::Import['create_user']
+      include Dummy::Import["create_user"]
     end
 
     obj = klass.new

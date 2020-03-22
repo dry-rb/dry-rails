@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
   def show
     if safe_params.success?
-      render json: { id: safe_params[:id], name: 'Jane' }
+      render json: {id: safe_params[:id], name: "Jane"}
     else
-      render json: { errors: safe_params.errors.to_h }
+      render json: {errors: safe_params.errors.to_h}
     end
   end
 end

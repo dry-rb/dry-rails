@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Dry::Rails, '.container' do
+RSpec.describe Dry::Rails, ".container" do
   subject(:system) { Dummy::Container }
 
   before do
@@ -17,7 +17,7 @@ RSpec.describe Dry::Rails, '.container' do
     Dry::Rails::Railtie.reload
   end
 
-  it 'allows setting up the container in multiple steps' do
+  it "allows setting up the container in multiple steps" do
     expect(system.config.default_namespace).to be(:dummy)
     expect(system[:inflector]).to be_instance_of(Dry::Inflector)
   end

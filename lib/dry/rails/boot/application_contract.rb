@@ -2,7 +2,7 @@
 
 Dry::System.register_component(:application_contract, provider: :rails) do
   init do
-    require 'dry/rails/core/application_contract'
+    require "dry/rails/core/application_contract"
   end
 
   start do

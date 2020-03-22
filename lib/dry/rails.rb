@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'dry/rails/railtie'
-require 'dry/rails/container'
-require 'dry/rails/components'
+require "dry/rails/railtie"
+require "dry/rails/container"
+require "dry/rails/components"
 
 module Dry
   # Initializer interface
@@ -36,7 +36,7 @@ module Dry
 
       default_options = {
         root: ::Rails.root,
-        system_dir: ::Rails.root.join('config/system')
+        system_dir: ::Rails.root.join("config/system")
       }
 
       container.config.update(default_options.merge(options))
