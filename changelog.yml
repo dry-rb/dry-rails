@@ -1,8 +1,6 @@
 ---
 - version: unreleased
-  date:
   summary: Initial port of dry-system-rails with a couple of new features
-  fixed:
   added:
   - "`:rails` system component provider, which uses standard bootable components, aka "features", to manage application state (@solnic)"
   - "`config.features`" setting which is an array with feature identifiers that you want the railtie to boot (@solnic)"
