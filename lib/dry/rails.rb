@@ -41,11 +41,14 @@ module Dry
 
       container.config.update(default_options.merge(options))
 
+      container
+    end
+
+    # @api private
+    def self.evaluate_initializer(container)
       _container_blocks.each do |block|
         container.class_eval(&block)
       end
-
-      container
     end
 
     # @api private

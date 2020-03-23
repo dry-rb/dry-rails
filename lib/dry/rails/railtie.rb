@@ -23,6 +23,8 @@ module Dry
         set_or_reload(:Container, container)
         set_or_reload(:Import, container.injector)
 
+        Dry::Rails.evaluate_initializer(container)
+
         container.features.each do |feature|
           container.boot(feature, from: :rails)
         end
