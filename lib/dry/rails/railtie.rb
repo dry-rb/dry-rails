@@ -16,7 +16,7 @@ module Dry
       def finalize!
         stop_features if reloading?
 
-        container = Dry::Rails.create_container(name: name)
+        container = Dry::Rails.create_container(name: name, default_namespace: name.to_s)
 
         container.register(:railtie, self)
 
