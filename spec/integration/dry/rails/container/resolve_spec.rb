@@ -17,7 +17,7 @@ RSpec.describe Dry::Rails::Container, ".[]" do
 
   context "with auto-registration from system initializer" do
     it "returns auto-registered component with another auto-injected" do
-      notifier = system['dummy.notifier']
+      notifier = system[:notifier]
 
       expect(notifier).to be_instance_of(Dummy::Notifier)
       expect(notifier.mailer).to be_instance_of(Mailer)
