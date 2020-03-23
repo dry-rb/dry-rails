@@ -24,11 +24,6 @@ module Dry
           self
         end
 
-        # @api private
-        def root
-          ::Rails.root
-        end
-
         # Return if a given component was booted
         #
         # @return [Boolean]
