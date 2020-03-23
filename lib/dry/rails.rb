@@ -32,16 +32,7 @@ module Dry
     #
     # @api private
     def self.create_container(options = {})
-      container = Class.new(Container)
-
-      default_options = {
-        root: ::Rails.root,
-        system_dir: ::Rails.root.join("config/system")
-      }
-
-      container.config.update(default_options.merge(options))
-
-      container
+      Class.new(Container) { config.update(options) }
     end
 
     # @api private
