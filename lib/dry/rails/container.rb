@@ -12,7 +12,7 @@ module Dry
     #
     # @api public
     class Container < System::Container
-      setting :features, %i[application_contract safe_params], reader: true
+      setting :features, %i[application_contract safe_params controller_helpers], reader: true
 
       config.auto_registrar = Rails::AutoRegistrars::App
 
