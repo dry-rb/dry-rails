@@ -5,8 +5,6 @@ RSpec.describe Dry::Rails::Container, ".auto_register!" do
 
   before(:all) do
     Dry::Rails.container do
-      auto_register!("lib")
-
       auto_register!("app/workers") do |config|
         config.memoize = true
       end
