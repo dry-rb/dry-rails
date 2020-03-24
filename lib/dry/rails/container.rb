@@ -17,10 +17,14 @@ module Dry
       config.auto_registrar = Rails::AutoRegistrars::App
 
       class << self
+        # TODO: this could be moved to dry-system and use a kwarg ie
+        #       `load_paths: (true|false)` because sometimes you want
+        #       them to be auto-set and sometimes you don't
+        #
         # @api public
-        def auto_register!(*args, &block)
-          load_paths!(*args)
-          super
+        def auto_register!(*paths, &block)
+          load_paths!(*paths)
+          paths.each { |path| super(path, &block) }
           self
         end
 
@@ -33,9 +37,11 @@ module Dry
           booter.booted.map(&:identifier).include?(name)
         end
 
-        # @api private
-        def require_path(path)
-          ::Kernel.require(path)
+        if Rails::VERSION.start_with?("5")
+          # @api private
+          def require_path(path)
+            require_dependency(path)
+          end
         end
 
         # This is called when reloading in dev mode
