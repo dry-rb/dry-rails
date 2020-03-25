@@ -3,11 +3,7 @@
 RSpec.describe Dry::Rails::Core::ApplicationContract do
   context "when the feature is enabled" do
     subject(:contract) do
-      Class.new(Dummy::ApplicationContract) do
-        schema do
-          required(:name).filled(:string)
-        end
-      end.new
+      Dummy::Container[:user_contract]
     end
 
     it "preconfigures subclasses to use localized messages" do
