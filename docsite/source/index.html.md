@@ -7,7 +7,7 @@ type: gem
 name: dry-rails
 ---
 
-^WARNING
+^INFO
 Before dry-rails hits 1.0.0 it should be considered as beta software. Various usage patterns should emerge as more people try it out, so please do so and provide feedback!
 ^
 
