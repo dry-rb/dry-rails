@@ -14,6 +14,8 @@ module Dry
     class Container < System::Container
       setting :features, %i[application_contract safe_params controller_helpers], reader: true
 
+      setting :auto_register_paths, [].freeze, reader: true
+
       config.auto_registrar = Rails::AutoRegistrars::App
 
       class << self
@@ -22,10 +24,29 @@ module Dry
         #       them to be auto-set and sometimes you don't
         #
         # @api public
-        def auto_register!(*paths, &block)
-          load_paths!(*paths)
-          paths.each { |path| super(path, &block) }
+        def auto_register!(*paths, set_load_paths: true, load_files: false, &block)
+          load_paths!(*paths) if set_load_paths
+
+          if load_files
+            paths.each { |path| super(path, &block) }
+          else
+            config.auto_register_paths.concat(paths.product([block]))
+          end
+
           self
+        end
+
+        # @api public
+        def finalize!(freeze: false, &block)
+          features.each do |feature|
+            start(feature)
+          end
+
+          auto_register_paths.each do |(path, path_block)|
+            auto_register!(path, set_load_paths: false, load_files: true, &path_block)
+          end
+
+          super
         end
 
         # Return if a given component was booted
