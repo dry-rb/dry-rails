@@ -19,8 +19,7 @@ Before dry-rails hits 1.0.0 it should be considered as beta software. Various us
 
 ## Installation
 
-To generate a new application skeleton with `dry-rails` installed, you can use the default template
-provided by the gem. Here's a minimalistic example:
+To generate a new application skeleton with `dry-rails` installed, you can use the default template provided by the gem. Here's a minimalistic example:
 
 ```bash
 rails new my_app -MOPCSJT --template https://raw.githubusercontent.com/dry-rb/dry-rails/master/templates/default.rb
