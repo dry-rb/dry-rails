@@ -31,9 +31,18 @@ If you already have a Rails application, simply add `dry-rails` to your `Gemfile
 gem "dry-rails", "~> 0.1"
 ```
 
+## Overview
+
+The railtie integrates dry-system with the Rails runtime by setting up a system container for you that works out of the box with no configuration required. This is based on a couple of conventions:
+
+1. The system container is defined as `Container` constant within your application namespace defined by `config/application.rb`. For example, if you generate a new rails application and call it `blog`, then the application namespace will be called `Blog`, and so your system container will be available as `Blog::Container`
+2. The auto-injection mixin is defined as `Import` under the application namespace too
+3. You can tweak the system container via an initializer, it can be called however you want, but the convention that we use is to call it `config/initializers/system.rb`
+4. Bootable components are expected to be found in `config/system/*.rb` files
+
 ## Using auto-registration
 
-You can configure the application container to load files and register objects automatically via `auto_register!` feature. Typically, you want to set this up in the system initializer:
+Currently, the railtie **does not make any assumptions about your directory/file structure**. This means you are expected to specify where your components are located. Here's an example:
 
 ```ruby
 # config/initializers/system.rb
@@ -57,6 +66,35 @@ You can easily verify this using the console:
 ```ruby
 irb(main):001:0> MyApp::Container['users.create']
 => #<Users::Create:0x00007fa8f7c04f48>
+```
+
+### Using `Import` mixin
+
+The auto-injection mechanism is also set up for you automatically. Let's say you have a GitHub service that needs an HTTP client. The HTTP client will be part of your `lib` but the GitHub service will be part of your `app`. Here's how you could set it up:
+
+```ruby
+# lib/my_app/http.rb
+module MyApp
+  class HTTP
+    # some useful methods
+  end
+end
+
+# app/services/github.rb
+class Github
+  include MyApp::Import[:http]
+
+  # more useful methods
+end
+```
+
+You can verify that `Github` has access to `HTTP` object in the console:
+
+```ruby
+# bin/rails console
+
+irb(main):001:0> MyApp::Container[:github]
+=> #<Github:0x00007fb38c2fae30 @http=#<MyApp::HTTP:0x00007fb38c2fb150>>
 ```
 
 ## Safe Params
