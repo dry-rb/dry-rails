@@ -22,10 +22,12 @@ module Dry
           root: root_path,
           name: name,
           default_namespace: name.to_s,
+          inflector: default_inflector,
           system_dir: root_path.join("config/system")
         )
 
         container.register(:railtie, self)
+        container.register(:inflector, default_inflector)
 
         set_or_reload(:Container, container)
         set_or_reload(:Import, container.injector)
@@ -75,6 +77,11 @@ module Dry
           top_level_namespace = ::Rails.application.class.to_s.split("::").first
           Object.const_get(top_level_namespace)
         end
+      end
+
+      # @api private
+      def default_inflector
+        ActiveSupport::Inflector
       end
 
       # @api private
