@@ -125,8 +125,6 @@ module Dry
         app_namespace.const_set(const_name, const)
       end
 
-      # Remove a constant from the application namespace
-      #
       # @api private
       def remove_constant(const_name)
         app_namespace.__send__(:remove_const, const_name)
