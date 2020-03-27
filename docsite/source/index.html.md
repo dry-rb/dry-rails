@@ -97,6 +97,19 @@ irb(main):001:0> MyApp::Container[:github]
 => #<Github:0x00007fb38c2fae30 @http=#<MyApp::HTTP:0x00007fb38c2fb150>>
 ```
 
+## Inflector
+
+By default, the railtie registers `ActiveSupport::Inflector` as the default inflector. You can access it via container:
+
+```ruby
+# bin/rails console
+
+irb(main):007:0> MyApp::Container[:inflector].demodulize("MyApp::Container")
+=> "Container"
+```
+
+It is *recommended* to inject the inflector via the import module, instead of referring to the global `ActiveSupport::Inflector` constant. Otherwise you'll loose the ability to easily switch inflectors when you have a need, which *can happen*. Your future-self will be grateful.
+
 ## Safe Params
 
 Controllers can specify schemas for their actions and access safe params through `safe_params` helper. This is like `strong_parameters` but much more powerful as its powered by dry-schema.
