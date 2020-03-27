@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rails/version"
+
 require "dry/system/container"
 require "dry/system/components"
 
@@ -126,7 +128,7 @@ module Dry
           booter.booted.map(&:identifier).include?(name)
         end
 
-        if Rails::VERSION.start_with?("5")
+        if ::Rails.version.start_with?("5")
           # @api private
           def require_path(path)
             require_dependency(path)
