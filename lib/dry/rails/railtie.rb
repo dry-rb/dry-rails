@@ -4,15 +4,22 @@ require "rails/railtie"
 
 module Dry
   module Rails
-    # System railtie is responsible for setting up a container and handling reloading in dev mode
+    # The railtie is responsible for setting up a container and handling reloading in dev mode
     #
-    # @api private
+    # @api public
     class Railtie < ::Rails::Railtie
+      # This is needed because `finalize!` can reload code and this hook is called every-time
+      # in development env upon a request (in production it's called just once during booting)
       config.to_prepare do
         Railtie.finalize!
       end
 
-      # @api private
+      # Code-reloading-aware finalization process
+      #
+      # This sets up `Container` and `Import` constants, reloads them if this is in reloading mode,
+      # and registers default components like the railtie itself or the inflector
+      #
+      # @api public
       def finalize!
         stop_features if reloading?
 
@@ -44,34 +51,57 @@ module Dry
       end
       alias_method :reload, :finalize!
 
-      # @api private
+      # Stops all configured features (bootable components)
+      #
+      # This is *crucial* when reloading code in development mode. Every bootable component
+      # should be able to clear the runtime from any constants that it created in its `stop`
+      # lifecycle step
+      #
+      # @api public
       def stop_features
         container.features.each do |feature|
           container.stop(feature) if container.booted?(feature)
         end
       end
 
-      # @api private
+      # Exposes the container constant
+      #
+      # @return [Dry::Rails::Container]
+      #
+      # @api public
       def container
         app_namespace.const_get(:Container)
       end
 
+      # Return true if we're in code-reloading mode
+      #
       # @api private
       def reloading?
         app_namespace.const_defined?(:Container)
       end
 
+      # Return the default system name
+      #
+      # In the dry-system world containers are explicitly named using symbols, so that you can
+      # refer to them easily when ie importing one container into another
+      #
+      # @return [Symbol]
+      #
       # @api private
       def name
         app_namespace.name.underscore.to_sym
       end
 
+      # Infer the default application namespace
+      #
       # TODO: we had to rename namespace=>app_namespace because
       #       Rake::DSL's Kernel#namespace *sometimes* breaks things.
       #       Currently we are missing specs verifying that rake tasks work
       #       correctly and those must be added!
       #
-      # @api private
+      # @return [Module]
+      #
+      # @api public
       def app_namespace
         @app_namespace ||= begin
           top_level_namespace = ::Rails.application.class.to_s.split("::").first
@@ -79,6 +109,8 @@ module Dry
         end
       end
 
+      # Sets or reloads a constant within the application namespace
+      #
       # @api private
       def default_inflector
         ActiveSupport::Inflector
@@ -93,6 +125,8 @@ module Dry
         app_namespace.const_set(const_name, const)
       end
 
+      # Remove a constant from the application namespace
+      #
       # @api private
       def remove_constant(const_name)
         app_namespace.__send__(:remove_const, const_name)

@@ -7,13 +7,11 @@ require "dry/rails/components"
 module Dry
   # Initializer interface
   #
-  # @example set up a customized container
+  # @example set up a container with auto-registration paths
   #   # config/initializer/system.rb
   #
   #   Dry::Rails.container do
-  #     use :monitoring
-  #
-  #     config.auto_register << 'app/operations'
+  #     auto_register!("lib", "app/operations")
   #   end
   #
   # @api public
