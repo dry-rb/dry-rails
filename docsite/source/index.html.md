@@ -40,6 +40,8 @@ The railtie integrates dry-system with the Rails runtime by setting up a system 
 3. You can tweak the system container via an initializer, it can be called however you want, but the convention that we use is to call it `config/initializers/system.rb`
 4. Bootable components are expected to be found in `config/system/*.rb` files
 
+The railtie supports code-reloading in development mode - `Container`, `Import` and boot files get reloaded upon every request (or when you manually `reload!` in the console).
+
 ## Using auto-registration
 
 Currently, the railtie **does not make any assumptions about your directory/file structure**. This means you are expected to specify where your components are located. Here's an example:
@@ -108,7 +110,9 @@ irb(main):007:0> MyApp::Container[:inflector].demodulize("MyApp::Container")
 => "Container"
 ```
 
-It is *recommended* to inject the inflector via the import module, instead of referring to the global `ActiveSupport::Inflector` constant. Otherwise you'll loose the ability to easily switch inflectors when you have a need, which *can happen*. Your future-self will be grateful.
+^INFO
+It is *recommended* to inject the inflector via the import module, instead of referring to the global `ActiveSupport::Inflector` constant. Otherwise you'll lose the ability to easily switch inflectors when you have a need, which *can happen*. Your future-self will be grateful.
+^
 
 ## Safe Params
 
