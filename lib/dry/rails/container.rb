@@ -65,11 +65,7 @@ module Dry
         #
         # @example set up multiple paths
         #   Dry::Rails.container do
-        #     auto_register!("lib", "app/operations") do |config|
-        #       config.exclude do |component|
-        #         component.path.start_with?("concerns")
-        #       end
-        #     end
+        #     auto_register!("lib", "app/operations")
         #   end
         #
         # @example set up multiple paths with a configuration block
