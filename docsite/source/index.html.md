@@ -144,7 +144,7 @@ class UsersController < ApplicationController
 end
 ```
 
-`safe_params` returns a dry-schema result object, you can use it return a default error response, ie:
+`safe_params` returns a dry-schema result object, you can use it to return a default error response, ie:
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -152,7 +152,7 @@ class ApplicationController < ActionController::Base
 
   before_action do
     if safe_params && safe_params.failure?
-      render :error, errors: safe_params.errors.to_h and throw(:abort)
+      render(:error, errors: safe_params.errors.to_h) and throw(:abort)
     end
   end
 end
