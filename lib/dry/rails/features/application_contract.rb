@@ -18,7 +18,9 @@ module Dry
       class ApplicationContract < Dry::Validation::Contract
         # This is called during the booting process of the `:application_contract` feature
         #
-        # @return [self]
+        # @param railtie [Dry::Rails::Railtie]
+        #
+        # @return [Class]
         #
         # @api private
         def self.finalize!(railtie)
