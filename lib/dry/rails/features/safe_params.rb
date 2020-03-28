@@ -4,7 +4,7 @@ require "dry/schema/params"
 
 module Dry
   module Rails
-    module Core
+    module Features
       # SafeParams controller feature
       #
       # @api public

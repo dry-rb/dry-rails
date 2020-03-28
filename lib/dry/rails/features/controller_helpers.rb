@@ -2,7 +2,7 @@
 
 module Dry
   module Rails
-    module Core
+    module Features
       # Controller helpers
       #
       # @api public

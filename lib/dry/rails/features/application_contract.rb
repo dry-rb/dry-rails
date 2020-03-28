@@ -4,7 +4,7 @@ require "dry/validation/contract"
 
 module Dry
   module Rails
-    module Core
+    module Features
       # Abstract application contract class used by the `:application_contract` feature
       #
       # This is an abstract class that's pre-configured during booting process to serve as the base

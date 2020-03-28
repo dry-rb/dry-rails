@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Dry::Rails::Core::ApplicationContract do
+RSpec.describe Dry::Rails::Features::ApplicationContract do
   context "when the feature is enabled" do
     subject(:contract) do
       Dummy::Container[:user_contract]

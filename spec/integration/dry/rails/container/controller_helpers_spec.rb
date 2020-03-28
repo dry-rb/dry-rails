@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Dry::Rails::Core::SafeParams do
+RSpec.describe Dry::Rails::Features::SafeParams do
   subject(:controller) do
     ApplicationController.new
   end

@@ -14,7 +14,7 @@ module Dry
   #     auto_register!("lib", "app/operations")
   #   end
   #
-  # @see [Dry::Rails::Container#auto_register]
+  # @see Dry::Rails::Container.auto_register!
   #
   # @api public
   module Rails

@@ -2,13 +2,13 @@
 
 Dry::System.register_component(:application_contract, provider: :rails) do
   init do
-    require "dry/rails/core/application_contract"
+    require "dry/rails/features/application_contract"
   end
 
   start do
     railtie.set_or_reload(
       :ApplicationContract,
-      Class.new(Dry::Rails::Core::ApplicationContract).finalize!(railtie)
+      Class.new(Dry::Rails::Features::ApplicationContract).finalize!(railtie)
     )
   end
 

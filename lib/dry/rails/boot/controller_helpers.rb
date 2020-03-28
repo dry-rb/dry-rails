@@ -2,10 +2,10 @@
 
 Dry::System.register_component(:controller_helpers, provider: :rails) do
   init do
-    require "dry/rails/core/controller_helpers"
+    require "dry/rails/features/controller_helpers"
   end
 
   start do
-    ApplicationController.include(Dry::Rails::Core::ControllerHelpers)
+    ApplicationController.include(Dry::Rails::Features::ControllerHelpers)
   end
 end
