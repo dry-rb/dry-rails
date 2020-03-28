@@ -15,9 +15,11 @@ module Dry
         #     render json: users
         #   end
         #
-        # @param [Symbol, String]
+        # @param key [Symbol, String] The component key
         #
         # @return [Object]
+        #
+        # @raise Dry::Container::Error
         #
         # @api public
         def resolve(key)

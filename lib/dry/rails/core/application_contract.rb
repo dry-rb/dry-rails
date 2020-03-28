@@ -18,6 +18,8 @@ module Dry
       class ApplicationContract < Dry::Validation::Contract
         # This is called during the booting process of the `:application_contract` feature
         #
+        # @return [self]
+        #
         # @api private
         def self.finalize!(railtie)
           load_paths = Dir[railtie.container.root.join("config/locales/*.yml")]

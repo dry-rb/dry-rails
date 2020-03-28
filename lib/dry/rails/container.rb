@@ -13,6 +13,8 @@ module Dry
     #
     # @api public
     class Container < System::Container
+      # @!group Configuration
+
       # @overload config.features=(features)
       #   Set an array of features that should be enabled by default
       #
@@ -80,11 +82,15 @@ module Dry
         #     end
         #   end
         #
-        # TODO: this could be moved to dry-system and use a kwarg ie
-        #       `load_paths: (true|false)` because sometimes you want
-        #       them to be auto-set and sometimes you don't
+        # @param paths [Array<String>] One or more paths relative to the root
+        # @param set_load_paths [Boolean] Whether the paths should be added to $LOAD_PATH
+        # @param load_files [Boolean] Whether files should be `required`-ed already
+        #
+        # @return [self]
         #
         # @api public
+        #
+        # TODO: this should be moved to dry-system
         def auto_register!(*paths, set_load_paths: true, load_files: false, &block)
           load_paths!(*paths) if set_load_paths
 
@@ -102,9 +108,13 @@ module Dry
         # This is called automatically via the railtie, so typically you won't be using this method
         # directly
         #
-        # @return [Container]
+        # @param freeze [Boolean] Whether the container should be frozen upon finalization
+        #
+        # @return [self]
         #
         # @api public
+        #
+        # TODO: just like auto_register!, this should be moved to dry-system
         def finalize!(freeze: false, &block)
           features.each do |feature|
             start(feature)
@@ -119,15 +129,16 @@ module Dry
 
         # Return if a given component was booted
         #
-        # TODO: this should be moved to dry-system
-        #
         # @return [Boolean]
         #
         # @api private
+        #
+        # TODO: this should be moved to dry-system
         def booted?(name)
           booter.booted.map(&:identifier).include?(name)
         end
 
+        # TODO: confirm that this is really needed
         if ::Rails.version.start_with?("5")
           # @api private
           def require_path(path)
@@ -136,6 +147,8 @@ module Dry
         end
 
         # This is called when reloading in dev mode
+        #
+        # @return [self]
         #
         # @api private
         def refresh_boot_files

@@ -18,7 +18,9 @@ module Dry
         module ClassMethods
           # Define a schema for controller action(s)
           #
-          # @param [Array<Symbol>] *actions
+          # @param actions [Array<Symbol>]
+          #
+          # @return [self]
           #
           # @api public
           def schema(*actions, &block)
@@ -43,7 +45,7 @@ module Dry
 
         # Return schema result
         #
-        # @param [Dry::Schema::Result]
+        # @return [Dry::Schema::Result]
         #
         # @api public
         def safe_params
