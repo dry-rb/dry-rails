@@ -219,3 +219,11 @@ Dry::Rails.container do
   ]
 end
 ```
+
+## Learn more
+
+The railtie simply puts together other dry-rb gems and make them work out-of-the-box in a typical Rails application. If you want to fully leverage the power of these tools, it is recommended to check out individual gem documentation pages:
+
+* [dry-system](/gems/dry-system) - which is the backbone of `Dry::Rails::Container`, your application container
+* [dry-schema](/gems/dry-schema) - which gives you the safe params feature
+* [dry-validation](/gems/dry-validation) - which gives you the application contract feature
