@@ -15,6 +15,9 @@ module Dry
           klass.extend(ClassMethods)
         end
 
+        # ApplicationController methods
+        #
+        # @api public
         module ClassMethods
           # Define a schema for controller action(s)
           #

@@ -14,9 +14,13 @@ module Dry
   #     auto_register!("lib", "app/operations")
   #   end
   #
+  # @see [Dry::Rails::Container#auto_register]
+  #
   # @api public
   module Rails
     # Set container block that will be evaluated in the context of the container
+    #
+    # @return [self]
     #
     # @api public
     def self.container(&block)
@@ -27,6 +31,10 @@ module Dry
     # Create a new container class
     #
     # This is used during booting and reloading
+    #
+    # @param options [Hash] Container configuration settings
+    #
+    # @return [Class]
     #
     # @api private
     def self.create_container(options = {})
