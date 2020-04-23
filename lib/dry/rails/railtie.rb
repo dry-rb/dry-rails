@@ -70,14 +70,14 @@ module Dry
       #
       # @api public
       def container
-        app_namespace.const_get(:Container)
+        app_namespace.const_get(:Container, false)
       end
 
       # Return true if we're in code-reloading mode
       #
       # @api private
       def reloading?
-        app_namespace.const_defined?(:Container)
+        app_namespace.const_defined?(:Container, false)
       end
 
       # Return the default system name
@@ -118,7 +118,7 @@ module Dry
 
       # @api private
       def set_or_reload(const_name, const)
-        if app_namespace.const_defined?(const_name)
+        if app_namespace.const_defined?(const_name, false)
           app_namespace.__send__(:remove_const, const_name)
         end
 

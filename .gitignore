@@ -8,4 +8,5 @@ tmp/
 Gemfile.lock
 .byebug_history
 spec/dummy/.bundle
+spec/**/log/*.log
 doc
