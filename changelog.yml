@@ -1,11 +1,12 @@
 ---
+- version: unreleased
+  date:
+  fixed:
+  - "Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)"
 - version: 0.1.0
   summary: This is based on dry-system-rails that dry-rails replaces.
   date: 2020-03-30
-  fixed: &2
-  - 'Resolving `Container` constant looks it up only within the application namespace
-    (see #22 for more information) (@jandudulski)'
-  added: &1
+  added:
   - "`config.features` setting which is an array with feature identifiers that you
     want the railtie to boot (@solnic)"
   - "`:application_contract` feature which defines `ApplicationContract` within the
@@ -15,8 +16,3 @@
   - "`:controller_helpers` feature which adds `ApplicationController#{resolve,container}`
     shortcuts (@solnic)"
   changed: 
-- version: 0.1.0
-  summary: This is based on dry-system-rails that dry-rails replaces.
-  date: 2020-03-30
-  added: *1
-  fixed: *2
