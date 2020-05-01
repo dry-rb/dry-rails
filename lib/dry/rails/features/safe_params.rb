@@ -13,6 +13,10 @@ module Dry
         def self.included(klass)
           super
           klass.extend(ClassMethods)
+
+          klass.class_eval do
+            before_action(:set_safe_params)
+          end
         end
 
         # ApplicationController methods
@@ -33,8 +37,6 @@ module Dry
               schemas[name] = schema
             end
 
-            before_action(:set_safe_params)
-
             self
           end
 
@@ -52,7 +54,7 @@ module Dry
         #
         # @api public
         def safe_params
-          @safe_params
+          @safe_params.fetch(action_name.to_sym, nil)
         end
 
         # Return registered action schemas
@@ -68,7 +70,11 @@ module Dry
 
         # @api private
         def set_safe_params
-          @safe_params = schemas[action_name.to_sym].(request.params)
+          @safe_params ||= {}
+
+          schemas.each do |action, schema|
+            @safe_params[action] = schema.(request.params)
+          end
         end
       end
     end
