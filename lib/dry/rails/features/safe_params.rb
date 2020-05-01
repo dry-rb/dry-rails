@@ -33,7 +33,7 @@ module Dry
               schemas[name] = schema
             end
 
-            before_action(:set_safe_params, only: actions)
+            before_action(:set_safe_params)
 
             self
           end
