@@ -19,4 +19,23 @@ RSpec.describe "UsersController", type: :request do
       expect(json[:errors]).to eql(id: ["must be an integer"])
     end
   end
+
+  describe "GET /users/new" do
+    it "returns a successful response" do
+      get "/users/new/312"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(json[:id]).to be(312)
+      expect(json[:name]).to eql("Jane")
+    end
+
+    it "returns errors" do
+      get "/users/new/oops"
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(json[:errors]).to eql(id: ["must be an integer"])
+    end
+  end
 end
