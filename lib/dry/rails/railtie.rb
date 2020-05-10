@@ -37,9 +37,10 @@ module Dry
         container.register(:inflector, default_inflector)
 
         set_or_reload(:Container, container)
-        set_or_reload(:Import, container.injector)
 
         Dry::Rails.evaluate_initializer(container)
+
+        set_or_reload(container.import_constant, container.injector)
 
         container.features.each do |feature|
           container.boot(feature, from: :rails)
