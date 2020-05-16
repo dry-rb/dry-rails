@@ -54,7 +54,7 @@ module Dry
         #
         # @api public
         def safe_params
-          @safe_params.fetch(action_name.to_sym, nil)
+          @safe_params
         end
 
         # Return registered action schemas
@@ -70,11 +70,11 @@ module Dry
 
         # @api private
         def set_safe_params
-          @safe_params ||= {}
+          schema = schemas[action_name.to_sym]
 
-          schemas.each do |action, schema|
-            @safe_params[action] = schema.(request.params)
-          end
+          return unless schema
+
+          @safe_params = schema.(request.params)
         end
       end
     end
