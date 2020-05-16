@@ -4,6 +4,7 @@
 ### Fixed
 
 - Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
+- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
 
 ### Changed
 
@@ -17,6 +18,7 @@
 ### Fixed
 
 - Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
+- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
 
 ### Changed
 
