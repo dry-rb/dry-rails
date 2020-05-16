@@ -1,8 +1,17 @@
 ---
 - version: unreleased
-  date:
-  fixed:
-  - "Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)"
+  summary: 
+  date: 
+  fixed: &1
+  - 'Resolving `Container` constant looks it up only within the application namespace
+    (see #22 for more information) (@jandudulski)'
+  added: 
+  changed: &2
+  - 'The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)'
+- version: unreleased
+  date: 
+  fixed: *1
+  changed: *2
 - version: 0.1.0
   summary: This is based on dry-system-rails that dry-rails replaces.
   date: 2020-03-30
