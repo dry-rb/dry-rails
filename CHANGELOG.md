@@ -4,7 +4,25 @@
 ### Fixed
 
 - Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
+- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
 
+### Changed
+
+- The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)
+
+[Compare vunreleased...master](https://github.com/dry-rb/dry-rails/compare/vunreleased...master)
+
+## unreleased 
+
+
+### Fixed
+
+- Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
+- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
+
+### Changed
+
+- The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)
 
 [Compare v0.1.0...master](https://github.com/dry-rb/dry-rails/compare/v0.1.0...master)
 
