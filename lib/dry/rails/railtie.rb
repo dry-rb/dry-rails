@@ -33,6 +33,9 @@ module Dry
           system_dir: root_path.join("config/system")
         )
 
+        # Enable :env plugin by default because it is a very common requirement
+        container.use :env, inferrer: -> { ::Rails.env }
+
         container.register(:railtie, self)
         container.register(:inflector, default_inflector)
 

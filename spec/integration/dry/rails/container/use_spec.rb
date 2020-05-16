@@ -3,11 +3,13 @@
 RSpec.describe "Using dry-system plugins" do
   before(:all) do
     Dry::Rails.container do
-      use :env, inferrer: -> { Rails.env }
+      use :logging
     end
   end
 
   it "with extra settings inside the initializer container block" do
-    expect(Dummy::Container.env).to be(Rails.env)
+    Dummy::Container.configure {}
+
+    expect(Dummy::Container[:logger]).to be_a(Logger)
   end
 end
