@@ -7,7 +7,7 @@ RSpec.describe Dry::Rails, ".container" do
 
   before(:all) do
     Dry::Rails.container do
-      config.import_constant = "CustomImport"
+      config.auto_inject_constant = "CustomImport"
       register(:logger, Logger.new($stdout))
     end
 
@@ -20,7 +20,7 @@ RSpec.describe Dry::Rails, ".container" do
   end
 
   it "allows setting up a custom import constant name" do
-    expect(system.config.import_constant).to eql("CustomImport")
+    expect(system.config.auto_inject_constant).to eql("CustomImport")
     expect(Dummy).to be_const_defined :CustomImport
   end
 end

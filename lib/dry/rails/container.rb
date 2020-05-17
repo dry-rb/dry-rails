@@ -41,14 +41,14 @@ module Dry
       # @!scope class
       setting :auto_register_paths, [].freeze, reader: true
 
-      # @overload config.import_constant=(import_constant)
+      # @overload config.auto_inject_constant=(auto_inject_constant)
       #   Set a custom import constant name
       #
-      #   @param import_constant [String]
+      #   @param auto_inject_constant [String]
       #
       #   @api public
       # @!scope class
-      setting :import_constant, 'Import'.freeze, reader: true
+      setting :auto_inject_constant, 'Deps'.freeze, reader: true
 
       # @!endgroup
 

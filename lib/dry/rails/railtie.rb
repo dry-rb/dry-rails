@@ -40,7 +40,7 @@ module Dry
 
         Dry::Rails.evaluate_initializer(container)
 
-        set_or_reload(container.import_constant, container.injector)
+        set_or_reload(container.auto_inject_constant, container.injector)
 
         container.features.each do |feature|
           container.boot(feature, from: :rails)
