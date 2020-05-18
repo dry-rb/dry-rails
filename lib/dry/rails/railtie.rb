@@ -16,7 +16,7 @@ module Dry
 
       # Code-reloading-aware finalization process
       #
-      # This sets up `Container` and `Import` constants, reloads them if this is in reloading mode,
+      # This sets up `Container` and `Deps` constants, reloads them if this is in reloading mode,
       # and registers default components like the railtie itself or the inflector
       #
       # @api public

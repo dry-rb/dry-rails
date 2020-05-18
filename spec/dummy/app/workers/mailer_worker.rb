@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class MailerWorker
-  include Dummy::Import["mailer"]
+  include Dummy::Deps["mailer"]
 end

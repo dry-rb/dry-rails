@@ -17,7 +17,7 @@ RSpec.describe Dry::Rails::Railtie, ".finalize!" do
     expect(Dummy::Container.keys).to_not include("foo")
 
     klass = Class.new do
-      include Dummy::Import["create_user"]
+      include Dummy::Deps["create_user"]
     end
 
     obj = klass.new
