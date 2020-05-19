@@ -41,6 +41,15 @@ module Dry
       # @!scope class
       setting :auto_register_paths, [].freeze, reader: true
 
+      # @overload config.auto_inject_constant=(auto_inject_constant)
+      #   Set a custom import constant name
+      #
+      #   @param auto_inject_constant [String]
+      #
+      #   @api public
+      # @!scope class
+      setting :auto_inject_constant, 'Deps'.freeze, reader: true
+
       # @!endgroup
 
       # The railtie has a rails-specific auto-registrar which is app-dir aware

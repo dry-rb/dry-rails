@@ -16,7 +16,7 @@ module Dry
 
       # Code-reloading-aware finalization process
       #
-      # This sets up `Container` and `Import` constants, reloads them if this is in reloading mode,
+      # This sets up `Container` and `Deps` constants, reloads them if this is in reloading mode,
       # and registers default components like the railtie itself or the inflector
       #
       # @api public
@@ -40,9 +40,10 @@ module Dry
         container.register(:inflector, default_inflector)
 
         set_or_reload(:Container, container)
-        set_or_reload(:Import, container.injector)
 
         Dry::Rails.evaluate_initializer(container)
+
+        set_or_reload(container.auto_inject_constant, container.injector)
 
         container.features.each do |feature|
           container.boot(feature, from: :rails)

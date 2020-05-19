@@ -2,6 +2,6 @@
 
 module Dummy
   class Notifier
-    include Import[:mailer]
+    include Deps[:mailer]
   end
 end
