@@ -15,7 +15,7 @@ module Dry
           klass.extend(ClassMethods)
 
           klass.class_eval do
-            before_action(:set_safe_params)
+            before_action(:set_safe_params, prepend: true)
           end
         end
 
