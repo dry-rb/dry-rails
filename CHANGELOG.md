@@ -1,24 +1,14 @@
 ## unreleased 
 
 
-### Fixed
+### Added
 
-- Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
-- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
-
-### Changed
-
-- The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)
-
-[Compare vunreleased...master](https://github.com/dry-rb/dry-rails/compare/vunreleased...master)
-
-## unreleased 
-
+- You can now configure auto_inject constant name via `config.auto_inject_constant` - previously it was hardcoded as `"Import"`, now it's configured as `"Deps"` by default (issue #18 closed via #29) (@diegotoral)
 
 ### Fixed
 
 - Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)
-- [safe_params] defining multiple schemas works as expected (issue #23 fixed via #24) (@gotar)
+- [safe_params] defining multiple schemas works as expected (issue #23 fixed via 24) (@gotar)
 
 ### Changed
 
