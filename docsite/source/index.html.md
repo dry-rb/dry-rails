@@ -152,15 +152,11 @@ class ApplicationController < ActionController::Base
 
   before_action do
     if safe_params && safe_params.failure?
-      render(:error, errors: safe_params.errors.to_h) and throw(:abort)
+      render(:error, errors: safe_params.errors.to_h)
     end
   end
 end
 ```
-
-^INFO
-If you're curious about the `throw(:abort)` part check out [this article](https://blog.bigbinary.com/2016/02/13/rails-5-does-not-halt-callback-chain-when-false-is-returned.html) about early returns from action callbacks.
-^
 
 ## ApplicationContract
 
