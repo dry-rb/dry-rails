@@ -14,6 +14,14 @@ RSpec.describe Dry::Rails, ".container" do
     Dry::Rails::Railtie.reload
   end
 
+  after(:all) do
+    Dry::Rails.container do
+      config.auto_inject_constant = "Deps"
+    end
+
+    Dry::Rails::Railtie.reload
+  end
+
   it "allows setting up the container in multiple steps" do
     expect(system.config.default_namespace).to eql("dummy")
     expect(system[:logger]).to be_instance_of(Logger)
