@@ -20,6 +20,8 @@ module Dry
       # and registers default components like the railtie itself or the inflector
       #
       # @api public
+      #
+      # rubocop:disable Metrics/AbcSize
       def finalize!
         stop_features if reloading?
 
@@ -53,6 +55,7 @@ module Dry
 
         container.finalize!(freeze: !::Rails.env.test?)
       end
+      # rubocop:enable Metrics/AbcSize
       alias_method :reload, :finalize!
 
       # Stops all configured features (bootable components)
