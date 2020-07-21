@@ -1,4 +1,4 @@
-## unreleased 
+## 0.2.0 2020-07-21
 
 
 ### Added
@@ -14,7 +14,7 @@
 
 - The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)
 
-[Compare v0.1.0...master](https://github.com/dry-rb/dry-rails/compare/v0.1.0...master)
+[Compare v0.1.0...v0.2.0](https://github.com/dry-rb/dry-rails/compare/v0.1.0...v0.2.0)
 
 ## 0.1.0 2020-03-30
 
