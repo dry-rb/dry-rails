@@ -48,7 +48,7 @@ module Dry
       #
       #   @api public
       # @!scope class
-      setting :auto_inject_constant, 'Deps'.freeze, reader: true
+      setting :auto_inject_constant, "Deps", reader: true
 
       # @!endgroup
 
