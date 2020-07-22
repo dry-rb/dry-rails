@@ -7,5 +7,6 @@ Dry::System.register_component(:controller_helpers, provider: :rails) do
 
   start do
     ApplicationController.include(Dry::Rails::Features::ControllerHelpers)
+    ActionController::API.include(Dry::Rails::Features::ControllerHelpers) if defined?(ActionController::API)
   end
 end

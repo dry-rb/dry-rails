@@ -7,5 +7,6 @@ Dry::System.register_component(:safe_params, provider: :rails) do
 
   start do
     ApplicationController.include(Dry::Rails::Features::SafeParams)
+    ActionController::API.include(Dry::Rails::Features::SafeParams) if defined?(ActionController::API)
   end
 end
