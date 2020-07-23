@@ -1,3 +1,13 @@
+## unreleased 
+
+
+### Added
+
+- Controller features now support `ActionControll::API` too (issue #35 closed via #36) (@rinaldifonseca)
+
+
+[Compare v0.2.0...master](https://github.com/dry-rb/dry-rails/compare/v0.2.0...master)
+
 ## 0.2.0 2020-07-21
 
 
