@@ -1,13 +1,24 @@
 ---
+- version: unreleased
+  summary: 
+  date: 
+  fixed: 
+  added:
+  - 'Controller features now support `ActionControll::API` too (issue #35 closed via
+    #36) (@rinaldifonseca)'
+  changed: 
 - version: 0.2.0
-  summary:
+  summary: 
   date: 2020-07-21
   fixed:
-  - 'Resolving `Container` constant looks it up only within the application namespace (see #22 for more information) (@jandudulski)'
-  - '[safe_params] defining multiple schemas works as expected (issue #23 fixed via 24) (@gotar)'
+  - 'Resolving `Container` constant looks it up only within the application namespace
+    (see #22 for more information) (@jandudulski)'
+  - "[safe_params] defining multiple schemas works as expected (issue #23 fixed via
+    24) (@gotar)"
   added:
-  - |-
-    You can now configure auto_inject constant name via `config.auto_inject_constant` - previously it was hardcoded as `"Import"`, now it's configured as `"Deps"` by default (issue #18 closed via #29) (@diegotoral)
+  - 'You can now configure auto_inject constant name via `config.auto_inject_constant`
+    - previously it was hardcoded as `"Import"`, now it''s configured as `"Deps"`
+    by default (issue #18 closed via #29) (@diegotoral)'
   changed:
   - 'The `:env` dry-system plugin is now enabled by default (fixes #28 via #30) (@solnic)'
 - version: 0.1.0
@@ -22,4 +33,4 @@
     and exposes `safe_params` controller helper (@solnic)"
   - "`:controller_helpers` feature which adds `ApplicationController#{resolve,container}`
     shortcuts (@solnic)"
-  changed:
+  changed: 
