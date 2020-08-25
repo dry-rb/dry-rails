@@ -1,8 +1,9 @@
 ---
-- version: unreleased
-  summary: 
-  date: 
-  fixed: 
+- version: 0.2.1
+  summary:
+  date: 2020-08-26
+  fixed:
+  - 'Fix dry-system dependency to 0.17.0, to avoid incompatibilities with 0.18.0 (@timriley)'
   added:
   - 'Controller features now support `ActionControll::API` too (issue #35 closed via
     #36) (@rinaldifonseca)'
