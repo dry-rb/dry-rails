@@ -32,7 +32,8 @@ module Dry
           name: name,
           default_namespace: name.to_s,
           inflector: default_inflector,
-          system_dir: root_path.join("config/system")
+          system_dir: root_path.join("config/system"),
+          bootable_dirs: [root_path.join("config/system/boot")]
         )
 
         # Enable :env plugin by default because it is a very common requirement

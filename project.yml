@@ -11,6 +11,6 @@ gemspec:
     - rake
     - rspec
   runtime_dependencies:
-    - [dry-system, "~> 0.17.0"]
+    - [dry-system, "~> 0.18.0", ">= 0.18.1"]
     - [dry-schema, "~> 1.5"]
     - [dry-validation, "~> 1.5"]
