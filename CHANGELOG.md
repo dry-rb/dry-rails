@@ -1,3 +1,12 @@
+## 0.3.0 2020-08-26
+
+
+### Changed
+
+- Use dry-system 0.18.0 and configure new `bootable_dirs` setting appropriately (@timriley in #38)
+
+[Compare v0.2.1...v0.3.0](https://github.com/dry-rb/dry-rails/compare/v0.2.1...v0.3.0)
+
 ## 0.2.1 2020-08-26
 
 
