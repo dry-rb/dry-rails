@@ -1,4 +1,12 @@
 ---
+
+- version: 0.3.0
+  summary:
+  date: 2020-08-26
+  fixed:
+  added:
+  changed:
+  - 'Use dry-system 0.18.0 and configure new `bootable_dirs` setting appropriately (@timriley in #38)'
 - version: 0.2.1
   summary:
   date: 2020-08-26
