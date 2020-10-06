@@ -1,17 +1,25 @@
 ---
-
+- version: unreleased
+  summary: 
+  date: 
+  fixed:
+  - "`config.auto_inject_constant` is now cleared during code reloading (see #40 for
+    more info) (@diegotoral)"
+  added: 
+  changed: 
 - version: 0.3.0
-  summary:
+  summary: 
   date: 2020-08-26
-  fixed:
-  added:
+  fixed: 
+  added: 
   changed:
-  - 'Use dry-system 0.18.0 and configure new `bootable_dirs` setting appropriately (@timriley in #38)'
+  - 'Use dry-system 0.18.0 and configure new `bootable_dirs` setting appropriately
+    (@timriley in #38)'
 - version: 0.2.1
-  summary:
+  summary: 
   date: 2020-08-26
   fixed:
-  - 'Fix dry-system dependency to 0.17.0, to avoid incompatibilities with 0.18.0 (@timriley)'
+  - Fix dry-system dependency to 0.17.0, to avoid incompatibilities with 0.18.0 (@timriley)
   added:
   - 'Controller features now support `ActionControll::API` too (issue #35 closed via
     #36) (@rinaldifonseca)'
