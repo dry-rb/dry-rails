@@ -42,10 +42,13 @@ module Dry
         container.register(:railtie, self)
         container.register(:inflector, default_inflector)
 
-        set_or_reload(:Container, container)
+        # Remove previously defined constants, if any, so we don't end up with
+        # unsused constants in app's namespace when a name change happens.
+        remove_constant(container.auto_inject_constant)
 
         Dry::Rails.evaluate_initializer(container)
 
+        set_or_reload(:Container, container)
         set_or_reload(container.auto_inject_constant, container.injector)
 
         container.features.each do |feature|
@@ -126,16 +129,15 @@ module Dry
 
       # @api private
       def set_or_reload(const_name, const)
-        if app_namespace.const_defined?(const_name, false)
-          app_namespace.__send__(:remove_const, const_name)
-        end
-
+        remove_constant(const_name)
         app_namespace.const_set(const_name, const)
       end
 
       # @api private
       def remove_constant(const_name)
-        app_namespace.__send__(:remove_const, const_name)
+        if app_namespace.const_defined?(const_name, false)
+          app_namespace.__send__(:remove_const, const_name)
+        end
       end
     end
   end
