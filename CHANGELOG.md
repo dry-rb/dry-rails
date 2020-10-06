@@ -1,3 +1,13 @@
+## unreleased 
+
+
+### Fixed
+
+- `config.auto_inject_constant` is now cleared during code reloading (see #40 for more info) (@diegotoral)
+
+
+[Compare v0.3.0...master](https://github.com/dry-rb/dry-rails/compare/v0.3.0...master)
+
 ## 0.3.0 2020-08-26
 
 
