@@ -50,6 +50,15 @@ module Dry
       # @!scope class
       setting :auto_inject_constant, "Deps", reader: true
 
+      # @overload config.container_constant=(container_constant)
+      #   Set a custom container constant
+      #
+      #   @param container_constant [String]
+      #
+      #   @api public
+      # @!scope class
+      setting :container_constant, "Container", reader: true
+
       # @!endgroup
 
       # The railtie has a rails-specific auto-registrar which is app-dir aware
