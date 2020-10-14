@@ -36,11 +36,11 @@ gem "dry-rails", "~> 0.1"
 The railtie integrates dry-system with the Rails runtime by setting up a system container for you that works out of the box with no configuration required. This is based on a couple of conventions:
 
 1. The system container is defined as `Container` constant within your application namespace defined by `config/application.rb`. For example, if you generate a new rails application and call it `blog`, then the application namespace will be called `Blog`, and so your system container will be available as `Blog::Container`
-2. The auto-injection mixin is defined as `Import` under the application namespace too
+2. The auto-injection mixin is defined as `Deps` under the application namespace too
 3. You can tweak the system container via an initializer, it can be called however you want, but the convention that we use is to call it `config/initializers/system.rb`
 4. Bootable components are expected to be found in `config/system/*.rb` files
 
-The railtie supports code-reloading in development mode - `Container`, `Import` and boot files get reloaded upon every request (or when you manually `reload!` in the console).
+The railtie supports code-reloading in development mode - `Container`, `Deps` and boot files get reloaded upon every request (or when you manually `reload!` in the console).
 
 ## Using auto-registration
 
@@ -70,7 +70,7 @@ irb(main):001:0> MyApp::Container['users.create']
 => #<Users::Create:0x00007fa8f7c04f48>
 ```
 
-### Using `Import` mixin
+### Using `Deps` mixin
 
 The auto-injection mechanism is also set up for you automatically. Let's say you have a GitHub service that needs an HTTP client. The HTTP client will be part of your `lib` but the GitHub service will be part of your `app`. Here's how you could set it up:
 
@@ -84,7 +84,7 @@ end
 
 # app/services/github.rb
 class Github
-  include MyApp::Import[:http]
+  include MyApp::Deps[:http]
 
   # more useful methods
 end
