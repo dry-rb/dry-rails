@@ -8,6 +8,8 @@ module Dry
     #
     # @api public
     class Railtie < ::Rails::Railtie
+      attr_reader :container_const_name
+
       # This is needed because `finalize!` can reload code and this hook is called every-time
       # in development env upon a request (in production it's called just once during booting)
       config.to_prepare do
@@ -23,6 +25,8 @@ module Dry
       #
       # rubocop:disable Metrics/AbcSize
       def finalize!
+        @container_const_name ||= Dry::Rails::Container.container_constant
+
         stop_features if reloading?
 
         root_path = ::Rails.root
@@ -45,10 +49,13 @@ module Dry
         # Remove previously defined constants, if any, so we don't end up with
         # unsused constants in app's namespace when a name change happens.
         remove_constant(container.auto_inject_constant)
+        remove_constant(container.container_constant)
 
         Dry::Rails.evaluate_initializer(container)
 
-        set_or_reload(:Container, container)
+        @container_const_name = container.container_constant
+
+        set_or_reload(container.container_constant, container)
         set_or_reload(container.auto_inject_constant, container.injector)
 
         container.features.each do |feature|
@@ -81,14 +88,14 @@ module Dry
       #
       # @api public
       def container
-        app_namespace.const_get(:Container, false)
+        app_namespace.const_get(container_const_name, false)
       end
 
       # Return true if we're in code-reloading mode
       #
       # @api private
       def reloading?
-        app_namespace.const_defined?(:Container, false)
+        app_namespace.const_defined?(container_const_name, false)
       end
 
       # Return the default system name
