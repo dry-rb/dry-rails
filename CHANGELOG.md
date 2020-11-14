@@ -1,6 +1,10 @@
 ## unreleased 
 
 
+### Added
+
+- It's now possible to configure container constant name via `config.constainer_const_name` (issue #21 closed via #41) (@diegotoral)
+
 ### Fixed
 
 - `config.auto_inject_constant` is now cleared during code reloading (see #40 for more info) (@diegotoral)
