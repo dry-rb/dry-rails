@@ -28,7 +28,7 @@ rails new my_app -MOPCSJT --template https://raw.githubusercontent.com/dry-rb/dr
 If you already have a Rails application, simply add `dry-rails` to your `Gemfile`:
 
 ```ruby
-gem "dry-rails", "~> 0.1"
+gem "dry-rails", "~> 0.3"
 ```
 
 ## Overview
