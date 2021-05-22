@@ -1,5 +1,3 @@
-# This file is synced from dry-rb/template-gem repo
-
 name: ci
 
 on:
@@ -26,20 +24,24 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
-          - "3.0"
           - "2.7"
           - "2.6"
           - "2.5"
           - "jruby"
+        rails:
+          - "5.x"
+          - "6.x"
         include:
-          - ruby: "3.0"
+          - ruby: "2.6"
             coverage: "true"
     env:
+      CLASSPATH: "" # tmp jruby build workaround
       COVERAGE: ${{matrix.coverage}}
-      COVERAGE_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
+      CODACY_RUN_LOCAL: true
+      CODACY_PROJECT_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
+      RAILS_VERSION: ${{matrix.rails}}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
       - name: Install package dependencies
         run: "[ -e $APT_DEPS ] || sudo apt-get install -y --no-install-recommends $APT_DEPS"
       - name: Set up Ruby
@@ -54,12 +56,6 @@ jobs:
         run: bundle install --jobs 4 --retry 3
       - name: Run all tests
         run: bundle exec rake
-      - name: Run codacy-coverage-reporter
-        uses: codacy/codacy-coverage-reporter-action@master
-        if: env.COVERAGE == 'true' && env.COVERAGE_TOKEN != ''
-        with:
-          project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
-          coverage-reports: coverage/coverage.xml
   release:
     runs-on: ubuntu-latest
     if: contains(github.ref, 'tags') && github.event_name == 'create'
@@ -80,4 +76,4 @@ jobs:
       - name: Trigger release workflow
         run: |
           tag=$(echo $GITHUB_REF | cut -d / -f 3)
-          ossy gh w dry-rb/devtools release --payload "{\"tag\":\"$tag\",\"sha\":\"${{github.sha}}\",\"tag_creator\":\"$GITHUB_ACTOR\",\"repo\":\"$GITHUB_REPOSITORY\",\"repo_name\":\"${{github.event.repository.name}}\"}"
+          ossy gh w dry-rb/devtools release --payload "{\"tag\":\"$tag\",\"tag_creator\":\"$GITHUB_ACTOR\",\"repo\":\"$GITHUB_REPOSITORY\"}"
