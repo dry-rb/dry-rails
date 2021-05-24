@@ -4,6 +4,9 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "dry-configurable", github: "dry-rb/dry-configurable"
+gem "dry-system", github: "dry-rb/dry-system"
+
 eval_gemfile "Gemfile.devtools"
 
 RAILS_VERSION = (ENV["RAILS_VERSION"] || "6.0").sub("x", "0")
