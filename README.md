@@ -1,3 +1,4 @@
+<!--- this file is synced from dry-rb/template-gem project -->
 [gem]: https://rubygems.org/gems/dry-rails
 [actions]: https://github.com/dry-rb/dry-rails/actions
 [codacy]: https://www.codacy.com/gh/dry-rb/dry-rails
@@ -12,18 +13,17 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/d4677ea0c4c2497bb1af1b3ac31552f4)][codacy]
 [![Inline docs](http://inch-ci.org/github/dry-rb/dry-rails.svg?branch=master)][inchpages]
 
-dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework.
 ## Links
 
-* [User documentation](http://dry-rb.org/gems/dry-rails)
+* [User documentation](https://dry-rb.org/gems/dry-rails)
 * [API documentation](http://rubydoc.info/gems/dry-rails)
 
 ## Supported Ruby versions
 
 This library officially supports the following Ruby versions:
 
-* MRI >= `2.4`
-* jruby >= `9.2`
+* MRI `>= 2.6.0`
+* jruby `>= 9.2`
 
 ## License
 
