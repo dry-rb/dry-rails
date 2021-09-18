@@ -27,7 +27,7 @@ module Dry
       #
       #   @api public
       # @!scope class
-      setting :features, %i[application_contract safe_params controller_helpers], reader: true
+      setting :features, default: %i[application_contract safe_params controller_helpers], reader: true
 
       # @overload config.auto_register_paths=(paths)
       #   Set an array of path/block pairs for auto-registration
@@ -39,7 +39,7 @@ module Dry
       #
       #   @api public
       # @!scope class
-      setting :auto_register_paths, [].freeze, reader: true
+      setting :auto_register_paths, default: [].freeze, reader: true
 
       # @overload config.auto_inject_constant=(auto_inject_constant)
       #   Set a custom import constant name
@@ -48,7 +48,7 @@ module Dry
       #
       #   @api public
       # @!scope class
-      setting :auto_inject_constant, "Deps", reader: true
+      setting :auto_inject_constant, default: "Deps", reader: true
 
       # @overload config.container_constant=(container_constant)
       #   Set a custom container constant
@@ -57,7 +57,7 @@ module Dry
       #
       #   @api public
       # @!scope class
-      setting :container_constant, "Container", reader: true
+      setting :container_constant, default: "Container", reader: true
 
       # @!endgroup
 
