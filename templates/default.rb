@@ -8,6 +8,8 @@ initializer "system.rb", <<-CODE
     config.features = %i[application_contract]
 
     # enable auto-registration in the lib dir
-    # auto_register!('lib')
+    # config.component_dirs.add "lib" do |dir|
+    #   dir.default_namespace = "my_super_cool_app"
+    # end
   end
 CODE

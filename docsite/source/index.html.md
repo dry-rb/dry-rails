@@ -49,7 +49,10 @@ Currently, the railtie **does not make any assumptions about your directory/file
 ```ruby
 # config/initializers/system.rb
 Dry::Rails.container do
-  auto_register!("app/operations")
+  config.component_dirs.add "app/operations"
+  config.component_dirs.add "lib" do |dir|
+    dir.default_namespace = "my_super_cool_app"
+  end
 end
 ```
 

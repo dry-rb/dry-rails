@@ -11,10 +11,12 @@ module Dry
   #   # config/initializer/system.rb
   #
   #   Dry::Rails.container do
-  #     auto_register!("lib", "app/operations")
-  #   end
+  #     config.component_dirs.add "lib" do |dir|
+  #       dir.default_namespace = "my_super_cool_app"
+  #     end
   #
-  # @see Dry::Rails::Container.auto_register!
+  #     config.component_dirs.add "app/operations"
+  #   end
   #
   # @api public
   module Rails
