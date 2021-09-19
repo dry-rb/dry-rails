@@ -36,4 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
+
+  # our super engine used in specs
+  spec.add_development_dependency "super_engine"
 end

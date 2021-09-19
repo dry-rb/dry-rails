@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Dry::Rails::Railtie, ".finalize!" do
+RSpec.describe Dry::Rails::Railtie, ".finalize!", :main_app do
   subject(:railtie) { Dry::Rails::Railtie.instance }
 
   it "reloads container and import module", no_reload: true do

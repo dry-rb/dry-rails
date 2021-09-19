@@ -14,6 +14,7 @@ end
 
 group :test do
   gem "rspec-rails"
+  gem "super_engine", path: "spec/dummies/with-engine/dummy/engines/super_engine", require: false
 end
 
 group :tools do
