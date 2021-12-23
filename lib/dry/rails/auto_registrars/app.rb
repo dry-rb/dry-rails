@@ -23,7 +23,7 @@ module Dry
           path = super
           return path unless dir.start_with?("app")
 
-          path.split("/")[1..-1].join("/")
+          path.split("/")[1..].join("/")
         end
       end
     end

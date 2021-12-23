@@ -9,8 +9,8 @@ require "dry-rails"
 
 SPEC_ROOT = Pathname(__dir__)
 
-Dir[SPEC_ROOT.join("shared/**/*.rb")].each(&method(:require))
-Dir[SPEC_ROOT.join("support/**/*.rb")].each(&method(:require))
+Dir[SPEC_ROOT.join("shared/**/*.rb")].sort.each(&method(:require))
+Dir[SPEC_ROOT.join("support/**/*.rb")].sort.each(&method(:require))
 
 ENV["RAILS_ENV"] ||= "test"
 
@@ -18,7 +18,6 @@ RAILS_VERSION = ENV["RAILS_VERSION"] || "6.x"
 WITH_ENGINE = (ENV["WITH_ENGINE"] || "true") == "true"
 DUMMY_DIR = WITH_ENGINE ? "with-engine" : "without-engine"
 require SPEC_ROOT.join("dummies/#{DUMMY_DIR}/dummy-#{RAILS_VERSION}/dummy/config/environment").to_s
-
 
 require "rspec/rails"
 
@@ -36,12 +35,10 @@ RSpec.configure do |config|
   end
 
   config.around(production: true) do |example|
-    begin
-      prev_env = Rails.env
-      Rails.env = "production"
-      example.run
-    ensure
-      Rails.env = prev_env
-    end
+    prev_env = Rails.env
+    Rails.env = "production"
+    example.run
+  ensure
+    Rails.env = prev_env
   end
 end
