@@ -51,7 +51,7 @@ Currently, the railtie **does not make any assumptions about your directory/file
 Dry::Rails.container do
   config.component_dirs.add "app/operations"
   config.component_dirs.add "lib" do |dir|
-    dir.default_namespace = "my_super_cool_app"
+    dir.namespaces.add "my_super_cool_app", key: nil
   end
 end
 ```

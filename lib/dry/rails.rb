@@ -12,7 +12,7 @@ module Dry
   #
   #   Dry::Rails.container do
   #     config.component_dirs.add "lib" do |dir|
-  #       dir.default_namespace = "my_super_cool_app"
+  #       dir.namespaces.add "my_super_cool_app", key: nil
   #     end
   #
   #     config.component_dirs.add "app/operations"
