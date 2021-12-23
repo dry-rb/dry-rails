@@ -8,7 +8,8 @@
   added:
   - 'It''s now possible to configure container constant name via `config.constainer_const_name`
     (issue #21 closed via #41) (@diegotoral)'
-  changed: 
+  changed:
+  - 'Updated to work with dry-system 0.20 (via #48) (@zlw)'
 - version: 0.3.0
   summary: 
   date: 2020-08-26
