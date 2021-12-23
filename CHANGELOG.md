@@ -11,6 +11,9 @@
 
 - `config.auto_inject_constant` is now cleared during code reloading (see #40 for more info) (@diegotoral)
 
+### Changed
+
+- Updated to work with dry-system 0.20 (via #48) (@zlw)
 
 [Compare v0.3.0...master](https://github.com/dry-rb/dry-rails/compare/v0.3.0...master)
 
