@@ -30,7 +30,6 @@ RSpec.describe Dry::Rails, ".container" do
   end
 
   it "allows setting up the container in multiple steps" do
-    expect(system.config.default_namespace).to eql("dummy")
     expect(system[:logger]).to be_instance_of(Logger)
   end
 

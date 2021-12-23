@@ -3,5 +3,13 @@
 require "dry/rails"
 
 Dry::Rails.container do
-  auto_register!("lib")
+  config.component_dirs.add "lib" do |dir|
+    dir.default_namespace = "dummy"
+  end
+
+  config.component_dirs.add "app/operations"
+  config.component_dirs.add "app/services"
+  config.component_dirs.add("app/workers") do |dir|
+    dir.memoize = true
+  end
 end

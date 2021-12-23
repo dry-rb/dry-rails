@@ -29,9 +29,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.6.0"
 
   # to update dependencies edit project.yml
-  spec.add_runtime_dependency "dry-schema", "~> 1.5"
-  spec.add_runtime_dependency "dry-system", "~> 0.18.0", ">= 0.18.1"
-  spec.add_runtime_dependency "dry-validation", "~> 1.5"
+  spec.add_runtime_dependency "dry-schema", "~> 1.8"
+  spec.add_runtime_dependency "dry-system", "~> 0.20.0", ">= 0.18.1"
+  spec.add_runtime_dependency "dry-validation", "~> 1.7"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"

@@ -33,8 +33,6 @@ module Dry
 
         container = Dry::Rails.create_container(
           root: root_path,
-          name: name,
-          default_namespace: name.to_s,
           inflector: default_inflector,
           system_dir: root_path.join("config/system"),
           bootable_dirs: [root_path.join("config/system/boot")]
