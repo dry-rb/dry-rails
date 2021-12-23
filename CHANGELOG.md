@@ -13,7 +13,7 @@
 
 ### Changed
 
-- Updated to work with dry-system 0.20 (via #48) (@zlw)
+- Updated to work with dry-system 0.21 (via #48 and #50) (@zlw + @solnic)
 
 [Compare v0.3.0...master](https://github.com/dry-rb/dry-rails/compare/v0.3.0...master)
 
