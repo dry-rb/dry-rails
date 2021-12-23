@@ -9,7 +9,7 @@ initializer "system.rb", <<-CODE
 
     # enable auto-registration in the lib dir
     # config.component_dirs.add "lib" do |dir|
-    #   dir.default_namespace = "my_super_cool_app"
+    #   dir.namespaces.add "my_super_cool_app", key: nil
     # end
   end
 CODE

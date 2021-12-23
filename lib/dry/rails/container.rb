@@ -67,7 +67,7 @@ module Dry
         #
         # TODO: this should be moved to dry-system
         def booted?(name)
-          booter.booted.map(&:identifier).include?(name)
+          booter.booted.map(&:name).include?(name)
         end
 
         # TODO: confirm that this is really needed
