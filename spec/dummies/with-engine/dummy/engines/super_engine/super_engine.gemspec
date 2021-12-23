@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.summary     = ""
   spec.description = ""
   spec.required_ruby_version = ">= 2.6.0"
+  spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
