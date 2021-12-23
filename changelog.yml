@@ -1,7 +1,7 @@
 ---
-- version: unreleased
-  summary:
-  date:
+- version: 0.4.0
+  summary: "This is a big update - please also read dry-system [CHANGELOG](https://github.com/dry-rb/dry-system/blob/master/CHANGELOG.md) versions 0.20 and 0.21."
+  date: 2021-12-23
   fixed:
   - "`config.auto_inject_constant` is now cleared during code reloading (see #40 for
     more info) (@diegotoral)"
