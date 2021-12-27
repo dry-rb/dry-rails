@@ -4,7 +4,7 @@ require "dry/rails"
 
 Dry::Rails.container do
   config.component_dirs.add "lib" do |dir|
-    dir.default_namespace = "dummy"
+    dir.namespaces.add "dummy", key: nil
   end
 
   config.component_dirs.add "app/operations"

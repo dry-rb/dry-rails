@@ -12,7 +12,7 @@ RSpec.describe Dry::Rails::Railtie, ".finalize!", :engine do
 
     Dry::Rails::Engine.container(:super_engine) do
       config.component_dirs.add "app/forms" do |dir|
-        dir.default_namespace = "super_engine"
+        dir.namespaces.add "super_engine", key: nil
       end
     end
 
