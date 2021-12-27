@@ -28,12 +28,16 @@ jobs:
         - "3.0"
         - "2.7"
         - "2.6"
+        dummy:
+        - "with-engine"
+        - "without-engine"
         include:
           - ruby: "3.0"
             coverage: "true"
     env:
       COVERAGE: ${{matrix.coverage}}
       COVERAGE_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
+      TEST_DUMMY: ${{matrix.dummy}}
     steps:
       - name: Checkout
         uses: actions/checkout@v1
