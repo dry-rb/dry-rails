@@ -15,8 +15,8 @@ Dir[SPEC_ROOT.join("support/**/*.rb")].sort.each(&method(:require))
 ENV["RAILS_ENV"] ||= "test"
 
 RAILS_VERSION = ENV["RAILS_VERSION"] || "6.x"
-DUMMY_DIR     = ENV["TEST_DUMMY"] || 'with-engine'
-WITH_ENGINE   = DUMMY_DIR == 'with-engine'
+DUMMY_DIR     = ENV["TEST_DUMMY"] || "with-engine"
+WITH_ENGINE   = DUMMY_DIR == "with-engine"
 require SPEC_ROOT.join("dummies/#{DUMMY_DIR}/dummy-#{RAILS_VERSION}/dummy/config/environment").to_s
 
 require "rspec/rails"
