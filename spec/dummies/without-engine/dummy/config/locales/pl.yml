@@ -1,0 +1,4 @@
+pl:
+  contracts:
+    errors:
+      filled?: 'nie może być puste'

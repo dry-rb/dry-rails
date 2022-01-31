@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem "actionpack"
+gem "dry-rails", path: "../../../.."
+gem "listen"
+gem "railties"
+gem "super_engine", path: "engines/super_engine"
