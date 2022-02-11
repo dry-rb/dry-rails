@@ -3,7 +3,7 @@
 require "rails/version"
 
 require "dry/system/container"
-require "dry/system/components"
+require "dry/system/provider_sources"
 
 require "dry/rails/auto_registrars/app"
 
@@ -59,15 +59,13 @@ module Dry
       config.auto_registrar = Rails::AutoRegistrars::App
 
       class << self
-        # Return if a given component was booted
+        # Return if a given component was started
         #
         # @return [Boolean]
         #
         # @api private
-        #
-        # TODO: this should be moved to dry-system
-        def booted?(name)
-          booter.booted.map(&:name).include?(name)
+        def started?(name)
+          providers[name].started?
         end
 
         # TODO: confirm that this is really needed
@@ -83,9 +81,9 @@ module Dry
         # @return [self]
         #
         # @api private
-        def refresh_boot_files
-          booter.boot_files.each do |boot_file|
-            load(boot_file)
+        def refresh_provider_files
+          providers.provider_files.each do |boot_file|
+            ::Kernel.load(boot_file)
           end
           self
         end

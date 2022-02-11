@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-Dry::System.register_component(:safe_params, provider: :rails) do
-  init do
+Dry::System.register_provider_source(:safe_params, group: :rails) do
+  prepare do
     require "dry/rails/features/safe_params"
   end
 
