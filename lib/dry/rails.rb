@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require "dry/system"
 require "dry/rails/railtie"
 require "dry/rails/container"
-require "dry/rails/components"
 
 module Dry
+  Dry::System.register_provider_sources(Pathname(__dir__).join("rails/boot").realpath)
+
   # Initializer interface
   #
   # @example set up a container with auto-registration paths

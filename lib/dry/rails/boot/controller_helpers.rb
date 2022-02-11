@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-Dry::System.register_component(:controller_helpers, provider: :rails) do
-  init do
+Dry::System.register_provider_source(:controller_helpers, group: :rails) do
+  prepare do
     require "dry/rails/features/controller_helpers"
   end
 

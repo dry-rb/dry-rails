@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-Dummy::Container.boot(:persistence) do |container|
+Dummy::Container.register_provider(:persistence) do
   start do
-    container.register("persistence.db", :i_am_db)
+    target.register("persistence.db", :i_am_db)
   end
 end

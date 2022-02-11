@@ -34,8 +34,7 @@ module Dry
         container = Dry::Rails.create_container(
           root: root_path,
           inflector: default_inflector,
-          system_dir: root_path.join("config/system"),
-          bootable_dirs: [root_path.join("config/system/boot")]
+          provider_dirs: [root_path.join("config/system/boot")]
         )
 
         # Enable :env plugin by default because it is a very common requirement
@@ -57,10 +56,10 @@ module Dry
         set_or_reload(container.auto_inject_constant, container.injector)
 
         container.features.each do |feature|
-          container.boot(feature, from: :rails)
+          container.register_provider(feature, from: :rails)
         end
 
-        container.refresh_boot_files if reloading?
+        container.refresh_provider_files if reloading?
 
         container.finalize!(freeze: !::Rails.env.test?)
       end
@@ -76,7 +75,7 @@ module Dry
       # @api public
       def stop_features
         container.features.each do |feature|
-          container.stop(feature) if container.booted?(feature)
+          container.stop(feature) if container.started?(feature)
         end
       end
 
