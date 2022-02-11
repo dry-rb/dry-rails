@@ -15,6 +15,7 @@ This is a big update - please also read dry-system [CHANGELOG](https://github.co
 ### Changed
 
 - Updated to work with dry-system 0.21 (via #48 and #50) (@zlw + @solnic)
+- dry-system dependency was bumped to >= 0.23 (via #52) (@solnic)
 
 [Compare v0.3.0...v0.4.0](https://github.com/dry-rb/dry-rails/compare/v0.3.0...v0.4.0)
 
