@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry/validation/contract"
+require "dry/validation"
 
 module Dry
   module Rails

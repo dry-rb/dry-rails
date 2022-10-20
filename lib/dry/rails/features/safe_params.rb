@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry/schema/params"
+require "dry/schema"
 
 module Dry
   module Rails
