@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "dry/system/auto_registrar"
+require "dry/system"
 
 module Dry
   module Rails

@@ -2,9 +2,7 @@
 
 require "rails/version"
 
-require "dry/system/container"
-require "dry/system/provider_sources"
-
+require "dry/system"
 require "dry/rails/auto_registrars/app"
 
 module Dry
