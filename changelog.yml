@@ -1,4 +1,11 @@
 ---
+- version: unreleased
+  summary: 
+  date: 
+  fixed: 
+  added: 
+  changed:
+  - 'Upgrade to zeitwerkified dry-rb deps (issue #55 fixed via #56) (@solnic)'
 - version: 0.5.0
   date: 2022-02-11
   changed:
@@ -17,24 +24,24 @@
   - 'Updated to work with dry-system 0.21 (via #48 and #50) (@zlw + @solnic)'
   - 'dry-system dependency was bumped to >= 0.23 (via #52) (@solnic)'
 - version: 0.3.0
-  summary:
+  summary: 
   date: 2020-08-26
-  fixed:
-  added:
+  fixed: 
+  added: 
   changed:
   - 'Use dry-system 0.18.0 and configure new `bootable_dirs` setting appropriately
     (@timriley in #38)'
 - version: 0.2.1
-  summary:
+  summary: 
   date: 2020-08-26
   fixed:
   - Fix dry-system dependency to 0.17.0, to avoid incompatibilities with 0.18.0 (@timriley)
   added:
   - 'Controller features now support `ActionControll::API` too (issue #35 closed via
     #36) (@rinaldifonseca)'
-  changed:
+  changed: 
 - version: 0.2.0
-  summary:
+  summary: 
   date: 2020-07-21
   fixed:
   - 'Resolving `Container` constant looks it up only within the application namespace
@@ -59,4 +66,4 @@
     and exposes `safe_params` controller helper (@solnic)"
   - "`:controller_helpers` feature which adds `ApplicationController#{resolve,container}`
     shortcuts (@solnic)"
-  changed:
+  changed: 
