@@ -17,6 +17,5 @@ group :test do
 end
 
 group :tools do
-  gem "byebug", platform: :ruby
   gem "redcarpet"
 end
