@@ -13,6 +13,5 @@ class ApiSafeParamsCallbacksController < ActionController::API
     required(:id).value(:integer)
   end
 
-  def show
-  end
+  def show; end
 end
