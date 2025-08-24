@@ -28,12 +28,10 @@ RSpec.configure do |config|
   end
 
   config.around(production: true) do |example|
-    begin
-      prev_env = Rails.env
-      Rails.env = "production"
-      example.run
-    ensure
-      Rails.env = prev_env
-    end
+    prev_env = Rails.env
+    Rails.env = "production"
+    example.run
+  ensure
+    Rails.env = prev_env
   end
 end
