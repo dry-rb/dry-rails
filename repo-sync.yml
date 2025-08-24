@@ -1,17 +1,19 @@
-name: dry-rails
-custom_ci: true
-codacy_id: d4677ea0c4c2497bb1af1b3ac31552f4
+name:
+  gem: dry-rails
+  constant: Dry::Rails
+github_org: dry-rb
 gemspec:
-  authors: ["Piotr Solnica"]
-  email: ["piotr.solnica@gmail.com"]
+  authors: ["Hanakai team"]
+  email: ["info@hanakai.org"]
   summary: "The official dry-rb railtie for Ruby on Rails"
   description: "dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework."
-  files: []
+  homepage: "https://dry-rb.org/gems/dry-rails"
+  required_ruby_version: ">= 3.1"
   development_dependencies:
     - bundler
     - rake
     - rspec
   runtime_dependencies:
+    - [dry-schema, "~> 1.7"]
     - [dry-system, "~> 1.0", "< 2"]
-    - [dry-schema, "~> 1.13", ">= 1.13"]
-    - [dry-validation, "~> 1.10", ">= 1.10"]
+    - [dry-validation, "~> 1.5"]
