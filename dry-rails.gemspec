@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.metadata["bug_tracker_uri"]   = "https://github.com/dry-rb/dry-rails/issues"
   spec.metadata["funding_uri"]       = "https://github.com/sponsors/hanami"
 
-  spec.required_ruby_version = ">= 3.1"
+  spec.required_ruby_version = ">= 3.2"
 
   spec.add_runtime_dependency "dry-schema", "~> 1.7"
   spec.add_runtime_dependency "dry-system", "~> 1.0", "< 2"
