@@ -7,10 +7,9 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ## Unreleased
 
-
 ### Changed
 
-- Update required Ruby version to 3.1 (@alassek)
+- Set minimum Ruby version to 3.2 (@alassek)
 
 ## 0.7.0 2022-12-23
 

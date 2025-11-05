@@ -8,7 +8,6 @@ gemspec:
   summary: "The official dry-rb railtie for Ruby on Rails"
   description: "dry-rails provides the official integration of dry-rb gems with Ruby on Rails framework."
   homepage: "https://dry-rb.org/gems/dry-rails"
-  required_ruby_version: ">= 3.1"
   development_dependencies:
     - bundler
     - rake
