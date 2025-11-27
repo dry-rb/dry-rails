@@ -24,5 +24,5 @@ group :test do
 end
 
 group :tools do
-  gem "redcarpet"
+  gem "redcarpet", platforms: :mri
 end
