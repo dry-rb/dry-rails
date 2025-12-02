@@ -10,3 +10,4 @@ Gemfile.lock
 spec/dummy/.bundle
 spec/**/log/*.log
 doc
+/.rubocop-*
