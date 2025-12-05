@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-require "user_repo"
-
 RSpec.describe Dry::Rails::Container, ".start" do
   subject(:user_repo) { UserRepo.new }
-
-  before do
-    pending "this fails for some reason" if RUBY_VERSION >= "3.1"
-  end
 
   context "when the system did not start a bootable dep" do
     it "lazy-loads and starts the dep" do
