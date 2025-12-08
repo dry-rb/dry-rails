@@ -188,14 +188,11 @@ Here's a simple usage example how you could access an operation powered by dry-m
 ```ruby
 class UsersController < ApplicationController
   def create
-    resolve("users.create").(safe_params[:user]) do |m|
-      m.success do |user|
-        render json: user
-      end
-
-      m.failure do |code, errors|
-        render json: { code: code, errors: errors.to_h }, status: :unprocessable_entity
-      end
+    case resolve("users.create").(safe_params[:user])
+    in Success[user]
+      render json: user
+    in Failure[code, errors]
+      render json: { code: code, errors: errors.to_h }, status: :unprocessable_entity
     end
   end
 end
