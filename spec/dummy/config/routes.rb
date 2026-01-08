@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "users/new/:id" => "users#new"
 
   get "safe_params_callbacks/show/:id" => "safe_params_callbacks#show"
+  get "inherited_safe_params_callbacks/show/:id" => "inherited_safe_params_callbacks#show"
 
   get "/api/users/show/:id" => "api_users#show"
   get "/api/users/new/:id" => "api_users#new"
