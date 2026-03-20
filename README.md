@@ -1,9 +1,14 @@
 <!--- This file is synced from hanakai-rb/repo-sync -->
 
-[rubygem]: https://rubygems.org/gems/dry-rails
 [actions]: https://github.com/dry-rb/dry-rails/actions
+[chat]: https://discord.gg/naQApPAsZB
+[forum]: https://discourse.hanamirb.org
+[rubygem]: https://rubygems.org/gems/dry-rails
 
 # dry-rails [![Gem Version](https://badge.fury.io/rb/dry-rails.svg)][rubygem] [![CI Status](https://github.com/dry-rb/dry-rails/workflows/CI/badge.svg)][actions]
+
+[![Forum](https://img.shields.io/badge/Forum-dc360f?logo=discourse&logoColor=white)][forum]
+[![Chat](https://img.shields.io/badge/Chat-717cf8?logo=discord&logoColor=white)][chat]
 
 ## Links
 
