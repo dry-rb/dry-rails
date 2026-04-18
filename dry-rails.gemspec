@@ -23,7 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.extra_rdoc_files = ["README.md", "CHANGELOG.md", "LICENSE"]
 
-  spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["changelog_uri"]     = "https://github.com/dry-rb/dry-rails/blob/main/CHANGELOG.md"
   spec.metadata["source_code_uri"]   = "https://github.com/dry-rb/dry-rails"
   spec.metadata["bug_tracker_uri"]   = "https://github.com/dry-rb/dry-rails/issues"
