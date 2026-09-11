@@ -15,7 +15,7 @@ Dir[SPEC_ROOT.join("support/**/*.rb")].each(&method(:require))
 
 ENV["RAILS_ENV"] ||= "test"
 
-RAILS_VERSION = ENV["RAILS_VERSION"] || "6.x"
+RAILS_VERSION = ENV["RAILS_VERSION"] || "8.x"
 
 require SPEC_ROOT.join("dummy-#{RAILS_VERSION}/dummy/config/environment").to_s
 
