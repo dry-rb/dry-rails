@@ -26,8 +26,8 @@ module Dry
       #   @api public
       # @!scope class
       setting :features,
-              default: %i[application_contract safe_params controller_helpers],
-              reader: true
+        default: %i[application_contract safe_params controller_helpers],
+        reader: true
 
       # @overload config.auto_inject_constant=(auto_inject_constant)
       #   Set a custom import constant name
@@ -37,8 +37,8 @@ module Dry
       #   @api public
       # @!scope class
       setting :auto_inject_constant,
-              default: "Deps",
-              reader: true
+        default: "Deps",
+        reader: true
 
       # @overload config.container_constant=(container_constant)
       #   Set a custom container constant
@@ -48,8 +48,8 @@ module Dry
       #   @api public
       # @!scope class
       setting :container_constant,
-              default: "Container",
-              reader: true
+        default: "Container",
+        reader: true
 
       # @!endgroup
 
