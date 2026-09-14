@@ -7,9 +7,17 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ## Unreleased
 
+### Added
+
+- Test dummy app for Rails 8 (@citizen428)
+
 ### Changed
 
 - Set minimum Ruby version to 3.2 (@alassek)
+
+### Removed
+
+- Test dummy apps for Rails 5 and 6 (@citizen428)
 
 ## 0.7.0 2022-12-23
 
