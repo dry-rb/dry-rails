@@ -13,9 +13,11 @@ if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4.0")
   gem "mutex_m"
 end
 
-RAILS_VERSION = (ENV["RAILS_VERSION"] || "6.0").sub("x", "0")
+RAILS_VERSION = (ENV["RAILS_VERSION"] || "8.1").sub("x", "0")
 
-%w[railties actionview actionpack].each do |name|
+gem "bootsnap"
+
+%w[railties activemodel actionview actionpack].each do |name|
   gem name, "~> #{RAILS_VERSION}"
 end
 

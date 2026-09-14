@@ -1,0 +1,7 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  Exclude:
+    - 'spec/dummy-8.x/**/*'

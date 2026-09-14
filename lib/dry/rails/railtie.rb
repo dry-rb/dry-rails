@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rails"
 require "rails/railtie"
 
 module Dry
