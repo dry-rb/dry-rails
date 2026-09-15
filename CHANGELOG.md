@@ -7,13 +7,17 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ## [Unreleased]
 
+[Unreleased]: https://github.com/dry-rb/dry-rails/compare/v0.8.0...main
+
+## [0.8.0] - 2026-09-15
+
 ### Added
 
 - Test dummy app for Rails 8. (@citizen428 in #67)
 
 ### Changed
 
-- Set minimum Ruby version to 3.2. (@alassek)
+- Set minimum Ruby version to 3.3. (@alassek)
 
 ### Deprecated
 
@@ -25,7 +29,7 @@ and this project adheres to [Break Versioning](https://www.taoensso.com/break-ve
 
 ### Security
 
-[Unreleased]: https://github.com/dry-rb/dry-rails/compare/v0.7.0...main
+[0.8.0]: https://github.com/dry-rb/dry-rails/compare/v0.7.0...v0.8.0
 
 ## [0.7.0] - 2022-12-23
 
