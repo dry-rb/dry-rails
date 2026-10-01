@@ -2,7 +2,7 @@
 
 [actions]: https://github.com/dry-rb/dry-rails/actions
 [chat]: https://discord.gg/naQApPAsZB
-[forum]: https://discourse.hanamirb.org
+[forum]: https://discourse.hanakai.org
 [rubygem]: https://rubygems.org/gems/dry-rails
 
 # dry-rails [![Gem Version](https://badge.fury.io/rb/dry-rails.svg)][rubygem] [![CI Status](https://github.com/dry-rb/dry-rails/workflows/CI/badge.svg)][actions]
