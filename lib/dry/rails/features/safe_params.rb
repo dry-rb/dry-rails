@@ -63,7 +63,13 @@ module Dry
         #
         # @api public
         def schemas
-          self.class.schemas
+          return @schemas if defined? @schemas
+
+          @schemas = if self.class.superclass.include?(Dry::Rails::Features::SafeParams)
+                       self.class.schemas.merge(self.class.superclass.schemas)
+                     else
+                       self.class.schemas
+                     end
         end
 
         private
